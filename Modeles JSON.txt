@@ -1,0 +1,71 @@
+//Exploration
+
+
+{
+	"dateExploration": "",
+	"locations": {
+		"start": "",
+		"end": ""
+	},
+	"runes": {},
+	"troop": {}
+}
+
+
+//Troop
+
+
+{
+	"name": "",
+	"attack": "",
+	"defense": "",
+	"speed": "",
+	"imageUrl": "",
+	"uuid": ""
+}
+
+
+//Runes
+
+
+{
+	"air": "",
+	"earth": "",
+	"fire": "",
+	"life": "",
+	"logic": "",
+	"water": "",
+	"fusion": ""
+}
+
+
+//Utilisateur création
+
+
+{
+	"name": "",
+	"username": "",
+	"password": "",
+	"token": {}
+}
+
+
+//Utilisateur connection
+
+
+{
+	"name": "",
+	"username": "",
+	"password": "",
+	"token": {},
+	"runes": {}
+}
+
+
+//Token
+
+
+{
+	"token": "",
+	"expires": ""
+}
