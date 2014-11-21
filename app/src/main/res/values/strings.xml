@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Epreuve Synthese</string>
-    <string name="title_section1">Explorateur</string>
+    <string name="title_section1">Connexion</string>
     <string name="title_section2">Scanner une clé</string>
     <string name="title_section3">Inventaire</string>
     <string name="title_section4">Explorations</string>

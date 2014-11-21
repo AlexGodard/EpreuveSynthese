@@ -45,7 +45,20 @@
     <EditText
         android:id="@+id/etMotDePasse"
         android:layout_width="300dp"
+        android:inputType="textPassword"
         android:layout_height="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vérification mot de passe"/>
+
+    <EditText
+        android:id="@+id/etVerificationMotDePasse"
+        android:inputType="textPassword"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+
 
     <Button
         android:id="@+id/btnSoumettre"

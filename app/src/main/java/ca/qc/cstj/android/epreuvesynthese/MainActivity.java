@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -20,7 +21,10 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks,
+                   ConnexionFragment.OnFragmentInteractionListener,
+                   ScanFragment.OnFragmentInteractionListener,
+                   InscriptionFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -51,9 +55,32 @@ public class MainActivity extends Activity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+
+        switch(position){
+            case 0:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
+                        .commit();
+            break;
+
+            case 1:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ScanFragment.newInstance())
+                        .commit();
+                break;
+
+            case 2:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, InventaireFragment.newInstance())
+                        .commit();
+                break;
+
+            case 3:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ExplorationFragment.newInstance())
+                        .commit();
+                break;
+        }
     }
 
     public void onSectionAttached(int number) {
@@ -66,6 +93,9 @@ public class MainActivity extends Activity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
                 break;
         }
     }
@@ -101,6 +131,11 @@ public class MainActivity extends Activity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     /**

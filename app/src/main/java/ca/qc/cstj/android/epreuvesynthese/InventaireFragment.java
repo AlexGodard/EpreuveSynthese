@@ -2,20 +2,17 @@ package ca.qc.cstj.android.epreuvesynthese;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 
 /**
  * Created by 1247308 on 2014-11-21.
  */
-public class ScanFragment extends Fragment {
+public class InventaireFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -29,18 +26,18 @@ public class ScanFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static ScanFragment newInstance() {
-        ScanFragment fragment = new ScanFragment();
+    public static InventaireFragment newInstance() {
+        InventaireFragment fragment = new InventaireFragment();
 
         return fragment;
     }
 
-    public ScanFragment() { }
+    public InventaireFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_scan, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_inventaire, container, false);
 
 
 
@@ -80,5 +77,4 @@ public class ScanFragment extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 }

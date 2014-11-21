@@ -35,6 +35,7 @@
 
     <EditText
         android:id="@+id/etMotDePasse"
+        android:inputType="textPassword"
         android:layout_width="300dp"
         android:layout_height="40dp" />
 

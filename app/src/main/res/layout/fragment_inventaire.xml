@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="Inventaire"
+        android:textSize="60dp"
+        android:gravity="center|top"/>
+
+
+    <ImageView
+        android:id="@+id/ivAirRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivEarthRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivFireRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivWaterRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivLogicRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivLifeRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+    <ImageView
+        android:id="@+id/ivFusionRune"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+</LinearLayout>

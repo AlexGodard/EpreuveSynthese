@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ public class ConnexionFragment extends Fragment {
     private Button btnInscription;
     private Button btnConnexion;
 
+    private OnFragmentInteractionListener mListener;
+
     /**
      * Returns a new instance of this fragment for the given section
      * number.
@@ -45,12 +48,12 @@ public class ConnexionFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_connexion, container, false);
 
 
-        btnInscription = (Button) getActivity().findViewById(R.id.btnInscription);
-        btnConnexion = (Button) getActivity().findViewById(R.id.btnConnexion);
+        btnInscription = (Button) rootView.findViewById(R.id.btnInscription);
+        btnConnexion = (Button) rootView.findViewById(R.id.btnConnexion);
 
-        btnInscription.setOnClickListener(new AdapterView.OnItemClickListener() {
+        btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View v) {
 
                 FragmentTransaction transaction =  getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container,InscriptionFragment.newInstance())
@@ -62,13 +65,11 @@ public class ConnexionFragment extends Fragment {
 
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onClick(View v) {
                 FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, ScanFragment.newInstance(position + 1))
+                transaction.replace(R.id.container, ScanFragment.newInstance())
                         .addToBackStack("");
                 transaction.commit();
-
             }
         });
 
@@ -86,6 +87,28 @@ public class ConnexionFragment extends Fragment {
         super.onAttach(activity);
         ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        public void onFragmentInteraction(Uri uri);
     }
 
 }
