@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import javax.xml.transform.Result;
+
 /**
  * Created by 1247308 on 2014-11-21.
  */
+
 public class ScanFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this
