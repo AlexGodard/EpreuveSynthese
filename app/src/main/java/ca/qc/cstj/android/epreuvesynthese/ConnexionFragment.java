@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
 
 /**
  * Created by 1247308 on 2014-11-21.
@@ -25,6 +36,9 @@ public class ConnexionFragment extends Fragment {
     private ProgressDialog progressDialog;
     private Button btnInscription;
     private Button btnConnexion;
+
+    private EditText etNomUtilisateur;
+    private EditText etMotDePasse;
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,6 +65,16 @@ public class ConnexionFragment extends Fragment {
         btnInscription = (Button) rootView.findViewById(R.id.btnInscription);
         btnConnexion = (Button) rootView.findViewById(R.id.btnConnexion);
 
+        etMotDePasse = (EditText) rootView.findViewById(R.id.etMotDePasse);
+        etNomUtilisateur = (EditText) rootView.findViewById(R.id.etNomUtilisateur);
+
+        return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
         btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,20 +90,32 @@ public class ConnexionFragment extends Fragment {
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, ScanFragment.newInstance())
-                        .addToBackStack("");
-                transaction.commit();
+
+                // On tente de connecter l'utilisateur
+                Ion.with(getActivity())
+                        .load(ServicesURI.EXPLORATEURS_SERVICE_URI + "?username=" + etNomUtilisateur.getText().toString() + "&password=" + etMotDePasse.getText().toString())
+                        .asJsonObject()
+                        .withResponse()
+                        .setCallback(new FutureCallback<Response<JsonObject>>() {
+                            @Override
+                            public void onCompleted(Exception e, Response<JsonObject> response) {
+
+                                if (response.getHeaders().getResponseCode() == 500)
+                                {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Erreur de connexion", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Vous êtes connecté!", Toast.LENGTH_LONG).show();
+
+                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.container, ScanFragment.newInstance())
+                                            .addToBackStack("");
+                                    transaction.commit();
+                                }
+                            }
+                        });
             }
         });
-
-        return rootView;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
     }
 
     @Override
