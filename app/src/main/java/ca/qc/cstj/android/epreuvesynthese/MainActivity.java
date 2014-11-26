@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -64,9 +66,14 @@ public class MainActivity extends Activity
             break;
 
             case 1:
-                fragmentManager.beginTransaction()
+                /*fragmentManager.beginTransaction()
                         .replace(R.id.container, ScanFragment.newInstance())
-                        .commit();
+                        .commit();*/
+
+                Intent intent = new Intent(this,SimpleScannerActivity.class);
+                //String message = editText.getText().toString();
+                //intent.putExtra(EXTRA_MESSAGE,message);
+                startActivity(intent);
                 break;
 
             case 2:
