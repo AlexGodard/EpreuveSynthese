@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Boo House</title>
+<title>Inox</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico">
@@ -71,7 +71,15 @@ $(window).load(
 			<li><a href="index.html">Déconnexion</a></li>
           </ul>
         </nav>
+		<div id="btnConnexion">
+			<h2>Connexion</h2>
+		</div>
+		<div id="connexion">
+			<input value="Nom d'utilisateur" onfocus="if (this.value=='Nom d\'utilisateur') this.value = ''" type="text" id="txtnomutilisateur" required>
+			<input value="Mot de passe" onfocus="if (this.value=='Mot de passe') this.value = ''" type="password" id="txtmotdepasse" required>
+		</div>
         <div class="clear"></div>
+		
       </div>
       <div class="clear"></div>
     </div>

@@ -225,6 +225,35 @@ a.btn:hover  {
 
 /*header*/
 
+/* Menu */
+
+#btnConnexion{
+	float: right;
+	width: 80px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#btnConnexion h2{
+	color: black;
+	font-size: 25px;
+}
+
+#connexion {
+	float: right;
+	width: 330px;
+	text-align: center;
+	margin-top: 18px;
+}
+
+#connexion input {
+	float: left;
+	width: 140px;
+	margin-right: 10px;
+	color: black;
+	font-size: 17px;
+}
+
 header {
 	display: block;
 	position: relative;
@@ -546,7 +575,7 @@ a.col1:hover {
 	color: #fff;
 }
 
-.text1 a:hover {
+.text1 a: {
 	color: #fff;
 }
 /****Map***/
