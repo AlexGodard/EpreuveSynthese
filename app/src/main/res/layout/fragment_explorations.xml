@@ -7,7 +7,19 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:text="Explorations"
         android:textSize="60dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Pour l'explorateur _____"
+        android:textSize="25dp"/>
+
+    <ListView
+        android:id="@+id/lstExplorations"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:text="Pour l'explorateur _____"
+        android:textSize="25dp"/>
 </LinearLayout>

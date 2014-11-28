@@ -65,7 +65,6 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
         super.onStart();
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
-
     }
 
 
@@ -96,6 +95,7 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
     @Override
     public void onDetach() {
         super.onDetach();
+        mScannerView.stopCamera();
         mListener = null;
     }
 
