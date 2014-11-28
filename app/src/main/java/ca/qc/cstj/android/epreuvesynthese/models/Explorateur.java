@@ -8,12 +8,14 @@ import com.google.gson.JsonObject;
 public class Explorateur {
 
     private String nom;
+    private String href;
     private String nomUtilisateur;
     private Inventaire inventaire;
 
     public Explorateur(JsonObject explorateur){
 
         nom = explorateur.getAsJsonPrimitive("name").getAsString();
+        href =  explorateur.getAsJsonPrimitive("href").getAsString();
         nomUtilisateur = explorateur.getAsJsonPrimitive("username").getAsString();
 
         if(explorateur.has("runes")){
@@ -31,6 +33,7 @@ public class Explorateur {
     public Explorateur(){
 
         nom = "";
+        href = "";
         nomUtilisateur = "";
 
         inventaire = new Inventaire();
