@@ -10,6 +10,7 @@ $(document).ready(function() {
 			   access_token : datatoken
 			},
 			success: function(response) {
+			alert(token);
 				$("#air").html("x " + response.air);		
 				$("#earth").html("x " + response.earth);		
 				$("#fire").html("x " + response.fire);		

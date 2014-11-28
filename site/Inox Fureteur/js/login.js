@@ -9,7 +9,7 @@ $(document).ready(function() {
 			dataType : 'json',
 			success: function(response) {
 			    localStorage.setItem("token",response.token.token);
-			    window.location.replace("accueil.html");		
+			    window.location.replace("index.html");		
 			    return true;						   
 			},
 			error: function(response) {			
