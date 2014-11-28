@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_inscription">Une erreur est survenue lors de la création. Veuillez réessayez plus tard.</string>
+    <string name="succes_inscription">Explorateur créé avec succès!</string>
+    <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
+</resources>

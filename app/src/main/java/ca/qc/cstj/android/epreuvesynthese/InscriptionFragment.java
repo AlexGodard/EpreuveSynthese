@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +20,12 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
 
+import org.apache.http.HttpStatus;
+
+import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
+import ca.qc.cstj.android.epreuvesynthese.models.Explorateur;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 
 /**
@@ -85,19 +93,44 @@ public class InscriptionFragment extends Fragment {
                     .addHeader("Content-Type", "application/json")
                     .setJsonObjectBody(body)
                     .asJsonObject()
-                    .setCallback(new FutureCallback<JsonObject>() {
-                                     @Override
-                                     public void onCompleted(Exception e, JsonObject jsonObject) {
-                                         Toast.makeText(getActivity().getApplicationContext(),"Explorateur créé avec succès!" , Toast.LENGTH_LONG).show();
-                                     }
+                    .withResponse()
+                    .setCallback(new FutureCallback<Response<JsonObject>>() {
+                        @Override
+                        public void onCompleted(Exception e, Response<JsonObject> jsonObjectResponse) {
+
+                            //Si on reçoit le code 201
+                            if(jsonObjectResponse.getHeaders().getResponseCode() == HttpStatus.SC_CREATED){
+
+                                JsonObject json = jsonObjectResponse.getResult();
+
+                                SharedParams.setExplorateur(json);
+
+                                if(json.has("token")) {
+                                    SharedParams.setToken(json.getAsJsonObject("token").getAsJsonPrimitive("token").getAsString());
+                                }
+
+
+                                String s = SharedParams.getToken();
+                                Explorateur explo = SharedParams._explorateur;
+
+                                Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_inscription) , Toast.LENGTH_LONG).show();
+
+
+                            }
+                            else{
+
+                                Toast.makeText(getActivity().getApplicationContext(),getString(R.string.error_inscription) , Toast.LENGTH_LONG).show();
+                            }
+                        }
                     });
         }
         else
         {
             Toast.makeText(getActivity().getApplicationContext(),
-                    "Erreur : Vous devez remplir tout les champs", Toast.LENGTH_LONG).show();
+                    getString(R.string.nonValide_inscription), Toast.LENGTH_LONG).show();
         }
     }
+
     @Override
     public void onStart() {
         super.onStart();
