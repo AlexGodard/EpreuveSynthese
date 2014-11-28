@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * Created by 1247308 on 2014-11-21.
@@ -17,6 +18,14 @@ public class InventaireFragment extends Fragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
+
+    private ImageView ivAirRune;
+    private ImageView ivFireRune;
+    private ImageView ivEarthRune;
+    private ImageView ivWaterRune;
+    private ImageView ivLifeRune;
+    private ImageView ivLogicRune;
+    private ImageView ivFusionRune;
 
     private ProgressDialog progressDialog;
 
@@ -39,7 +48,13 @@ public class InventaireFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_inventaire, container, false);
 
-
+        ivAirRune = (ImageView)rootView.findViewById(R.id.ivAirRune);
+        ivFireRune = (ImageView)rootView.findViewById(R.id.ivFireRune);
+        ivWaterRune = (ImageView)rootView.findViewById(R.id.ivWaterRune);
+        ivEarthRune = (ImageView)rootView.findViewById(R.id.ivEarthRune);
+        ivLogicRune = (ImageView)rootView.findViewById(R.id.ivLogicRune);
+        ivLifeRune = (ImageView)rootView.findViewById(R.id.ivLifeRune);
+        ivFusionRune = (ImageView)rootView.findViewById(R.id.ivFusionRune);
 
         return rootView;
     }
@@ -47,9 +62,7 @@ public class InventaireFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
     }
-
 
     @Override
     public void onAttach(Activity activity) {

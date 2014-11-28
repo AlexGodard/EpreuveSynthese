@@ -7,4 +7,5 @@ public class Explorateur {
     private String nom;
     private String nomUtilisateur;
     private String motDePasse;
+    private Inventaire inventaire;
 }

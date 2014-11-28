@@ -11,22 +11,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.zxing.BarcodeFormat;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.transform.Result;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
  * Created by 1247308 on 2014-11-21.
  */
 
-public class ScanFragment extends Fragment {
+public class ScanFragment extends Fragment implements ZXingScannerView.ResultHandler{
     /**
      * The fragment argument representing the section number for this
      * fragment.
      */
 
     private ProgressDialog progressDialog;
-
+    private ZXingScannerView mScannerView;
     private OnFragmentInteractionListener mListener;
+    private ArrayList<Integer> mSelectedIndices;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -41,19 +50,41 @@ public class ScanFragment extends Fragment {
     public ScanFragment() { }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_scan, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+        mScannerView = new ZXingScannerView(getActivity());
+        if(state != null) {
+        } else {
 
+        }
 
-
-        return rootView;
+        return mScannerView;
     }
 
     @Override
-    public void onStart() {
+    public void onStart(){
         super.onStart();
+        mScannerView.setResultHandler(this);
+        mScannerView.startCamera();
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mScannerView.setResultHandler(this);
+        mScannerView.startCamera();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mScannerView.stopCamera();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
 
@@ -66,6 +97,14 @@ public class ScanFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void handleResult(com.google.zxing.Result result) {
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
+        toast.show();
     }
 
 

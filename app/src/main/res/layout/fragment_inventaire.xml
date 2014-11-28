@@ -12,34 +12,143 @@
         android:textSize="60dp"
         android:gravity="center|top"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/air"
+            android:id="@+id/ivAirRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
 
-    <ImageView
-        android:id="@+id/ivAirRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivEarthRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivFireRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivWaterRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivLogicRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivLifeRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
-    <ImageView
-        android:id="@+id/ivFusionRune"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAir"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/fire"
+            android:id="@+id/ivFireRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFire"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/water"
+            android:id="@+id/ivWaterRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWater"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/earth"
+            android:id="@+id/ivEarthRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEarth"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/logic"
+            android:id="@+id/ivLogicRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLogic"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/life"
+            android:id="@+id/ivLifeRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLife"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/fusion"
+            android:id="@+id/ivFusionRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvFusion"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
 </LinearLayout>
