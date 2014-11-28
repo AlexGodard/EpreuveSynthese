@@ -66,14 +66,14 @@ public class MainActivity extends Activity
             break;
 
             case 1:
-                /*fragmentManager.beginTransaction()
+                fragmentManager.beginTransaction()
                         .replace(R.id.container, ScanFragment.newInstance())
-                        .commit();*/
+                        .commit();
 
-                Intent intent = new Intent(this,SimpleScannerActivity.class);
+                //Intent intent = new Intent(this,SimpleScannerActivity.class);
                 //String message = editText.getText().toString();
                 //intent.putExtra(EXTRA_MESSAGE,message);
-                startActivity(intent);
+                //startActivity(intent);
                 break;
 
             case 2:
