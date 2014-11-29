@@ -229,9 +229,9 @@ a.btn:hover  {
 
 #btnConnexion{
 	float: right;
-	width: 80px;
+	width: 105px;
 	text-align: center;
-	margin-top: 20px;
+	margin-right: -35px;
 }
 
 #btnConnexion h2{
@@ -243,14 +243,14 @@ a.btn:hover  {
 	float: right;
 	width: 330px;
 	text-align: center;
-	margin-top: 18px;
+	margin-top: 15px;
 }
 
 #connexion input {
 	float: left;
 	width: 140px;
 	margin-right: 10px;
-	color: black;
+	color: grey;
 	font-size: 17px;
 }
 
