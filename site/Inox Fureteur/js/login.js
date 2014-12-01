@@ -26,8 +26,7 @@ $(document).ready(function() {
 	
 	
 	var URL = "https://tpsynthese-web-v5458545875-mlarameecstj.c9.io/explorateurs";
-	$("#btnConnexion").click(function() { 
-		alert("dans .click");
+	$("#btnLogin").click(function() { 
 		URL += "?username=" + $("#txtnomutilisateur").val() 
 							+ "&password=" + $("#txtmotdepasse").val();	
 		$.ajax({
@@ -36,6 +35,7 @@ $(document).ready(function() {
 			dataType : 'json',
 			success: function(response) {
 			    localStorage.setItem("token",response.token.token);
+				alert(response.token.token);
 			    window.location.replace("index.html");		
 			    return true;						   
 			},
