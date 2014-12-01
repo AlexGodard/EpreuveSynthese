@@ -16,5 +16,10 @@
     <string name="error_inscription">Une erreur est survenue lors de la création. Veuillez réessayez plus tard.</string>
     <string name="succes_inscription">Explorateur créé avec succès!</string>
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header_details_explo">Informations relative à l\'exploration</string>
+    <string name="runes_details_explo">Runes que vous avez découvertes</string>
+    <string name="troop_details_explo">Troop que vous avez découvert</string>
+    <string name="submit_inscription">Soumettre</string>
 
 </resources>

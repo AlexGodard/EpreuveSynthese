@@ -103,6 +103,12 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
     public void handleResult(com.google.zxing.Result result) {
         int duration = Toast.LENGTH_LONG;
 
+        mScannerView.stopCamera();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, InventaireFragment.newInstance())
+                .commit();
+
         Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
         toast.show();
     }

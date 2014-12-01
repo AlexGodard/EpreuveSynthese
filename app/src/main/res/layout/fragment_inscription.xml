@@ -64,5 +64,5 @@
         android:id="@+id/btnSoumettre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Soumettre"/>
+        android:text="@string/submit_inscription"/>
 </LinearLayout>

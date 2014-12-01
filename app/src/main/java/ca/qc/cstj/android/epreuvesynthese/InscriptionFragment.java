@@ -111,7 +111,6 @@ public class InscriptionFragment extends Fragment {
 
 
                                 String s = SharedParams.getToken();
-                                Explorateur explo = SharedParams._explorateur;
 
                                 Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_inscription) , Toast.LENGTH_LONG).show();
 
