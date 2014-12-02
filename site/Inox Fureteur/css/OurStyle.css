@@ -10,10 +10,52 @@
   height:130px;
 }
 
+/* Menu */
+
+/* Section de connexion */
+#btnConnexion{
+	float: right;
+	width: 105px;
+	text-align: center;
+	margin-right: -35px;
+}
+
+#btnConnexion a{
+	color: black;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+#btnDeConnexion{
+	float: right;
+	width: 105px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#btnDeConnexion a{
+	color: black;
+	font-size: 25px;
+}
+
+#connexion {
+	float: right;
+	width: 330px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+#connexion input {
+	float: left;
+	width: 140px;
+	margin-right: 10px;
+	color: grey;
+	font-size: 17px;
+}
+
 #btnLogout {
 	float: right;
-	width: 90px;
+	width: 105px;
 	text-align: center;
-	margin-right: -614px;
-	margin-top: 30px;
+	margin-right: -35px;
 }
