@@ -1,30 +1,5 @@
 $(document).ready(function() {
-	$("#txtnomutilisateur").focus(function(){
-		if ($("#txtnomutilisateur").val() == "Pseudonym"){
-			$("#txtnomutilisateur").val("").css("color","black");
-		}
-	});
-	
-	$("#txtnomutilisateur").focusout(function(){
-		if ($("#txtnomutilisateur").val() == ""){
-			$("#txtnomutilisateur").val("Pseudonym").css("color","grey");
-		}
-	});
-	
-	$("#txtmotdepasse").focus(function(){
-		if ($("#txtmotdepasse").val() == "Mot de passe"){
-			$("#txtmotdepasse").val("").css("color","black");
-		}
-	});
-	
-	$("#txtmotdepasse").focusout(function(){
-		if ($("#txtmotdepasse").val() == ""){
-			$("#txtmotdepasse").val("Mot de passe").css("color","grey");
-		}
-	});
-	
-	
-	
+
 	var URL = "https://tpsynthese-web-v5458545875-mlarameecstj.c9.io/explorateurs";
 	$("#btnLogin").click(function() { 
 		URL += "?username=" + $("#txtnomutilisateur").val() 

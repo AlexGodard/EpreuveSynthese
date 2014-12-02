@@ -41,10 +41,6 @@ $(document).ready(function() {
 				  $("#water").append("<button id='addWater'>Creer une rune de fusion</button>");
 				}	
 				$("#fusion").html("x " + response.fusion);
-				if(response.fusion > 15)
-                {
-				  $("#fusion").append("<button id='addFusion'>Creer une rune de fusion</button>");
-				}	
 			    return true;						   
 			},
 			error: function(response) {			

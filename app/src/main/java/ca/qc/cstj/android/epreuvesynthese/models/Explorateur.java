@@ -43,4 +43,13 @@ public class Explorateur {
     public String getNom() {
         return nom;
     }
+
+    public void setRunes(JsonObject json){
+        inventaire = new Inventaire(json);
+    }
+
+    public JsonObject getRunesAsJson(){
+
+        return inventaire.getRunesAsJson();
+    }
 }

@@ -84,11 +84,11 @@ public class MainActivity extends Activity
                 break;
 
             case 2:
-                if(SharedParams.tokenIsValid()) {
+                //if(SharedParams.tokenIsValid()) {
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, InventaireFragment.newInstance())
                             .commit();
-                }
+               // }
                 break;
 
             case 3:

@@ -39,5 +39,22 @@ public class Inventaire {
 
     }
 
+    public JsonObject getRunesAsJson(){
+
+        JsonObject runes = new JsonObject();
+
+        runes.addProperty("air", nbRuneAir);
+        runes.addProperty("earth", nbRuneEarth);
+        runes.addProperty("fire", nbRuneFire);
+        runes.addProperty("life", nbRuneLife);
+        runes.addProperty("logic", nbRuneLogic);
+        runes.addProperty("water", nbRuneWater);
+        runes.addProperty("fusion", nbRuneFusion);
+
+
+        return runes;
+
+
+    }
 
 }

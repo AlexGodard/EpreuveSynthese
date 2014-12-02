@@ -225,8 +225,6 @@ a.btn:hover  {
 
 /*header*/
 
-/* Menu */
-
 header {
 	display: block;
 	position: relative;
@@ -423,7 +421,7 @@ h1 a img {
 }
 
 .blue.block1 img, .cont1  .blue img{
-	background-color: #029BFF;
+	background-color: #527dca;
 }
 
 .cont1 .box.bx2 {
@@ -432,7 +430,7 @@ h1 a img {
 }
 
 .green {
-	border-color: #527dca;
+	border-color: #738a17;
 }
 
 .green.block1 img, .cont1 img   {
@@ -440,26 +438,7 @@ h1 a img {
 }
 
 .cont1  .green img {
-	background-color: #007F24;
-}
-
-.cont1  .red img {
-	background-color: #7F0F00;
-}
-
-.cont1  .yellow img {
-	background-color: #FFB000;
-}
-
-.cont1  .turquoise img {
-	background-color: #00BFA2;
-}
-
-.cont1  .brown img {
-	background-color: #401C00;
-}
-.cont1  .black img {
-	background-color: black;
+	background-color: #e85441;
 }
 
 .cont1 .alright {
@@ -518,7 +497,7 @@ a.next:hover {
 }
 
 .pb1 {
-	padding-bottom: 45px;
+	padding-bottom: 22px;
 }
 
 .pt1 {
@@ -548,7 +527,7 @@ a.col1:hover {
 	color: #fff;
 }
 
-.text1 a: {
+.text1 a:hover {
 	color: #fff;
 }
 /****Map***/
