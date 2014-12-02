@@ -5,4 +5,5 @@
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
     <string name="runes_details_explo">Runes que vous avez découvertes</string>
     <string name="submit_inscription">Soumettre</string>
+    <string name="succes_connexion">Vous [êtes connecté</string>
 </resources>

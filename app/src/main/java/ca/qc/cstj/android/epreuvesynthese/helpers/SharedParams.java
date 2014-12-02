@@ -16,9 +16,11 @@ public class SharedParams {
     private static String _token;
     public static Explorateur _explorateur;
 
+
     public static void setExplorateur(JsonObject explorateur){
 
         _explorateur = new Explorateur(explorateur);
+        _explorateur.
 
     }
 
@@ -35,6 +37,25 @@ public class SharedParams {
         }
 
         return _token;
+
+    }
+
+    public static boolean tokenIsValid(){
+
+        boolean retour = false;
+
+        try{
+            if(_token.length() > 0)
+                retour = true;
+
+        }
+        catch(Exception e){
+            retour = false;
+        }
+
+
+        return retour;
+
 
     }
 

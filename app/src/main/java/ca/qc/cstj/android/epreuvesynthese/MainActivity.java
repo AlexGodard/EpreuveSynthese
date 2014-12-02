@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
 
 
 public class MainActivity extends Activity
@@ -60,15 +63,19 @@ public class MainActivity extends Activity
 
         switch(position){
             case 0:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
-                        .commit();
-            break;
+                if(!SharedParams.tokenIsValid()) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
+                            .commit();
+                }
+                break;
 
             case 1:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, ScanFragment.newInstance())
-                        .commit();
+                if(SharedParams.tokenIsValid()) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, ScanFragment.newInstance())
+                            .commit();
+                }
 
                 //Intent intent = new Intent(this,SimpleScannerActivity.class);
                 //String message = editText.getText().toString();
@@ -77,15 +84,19 @@ public class MainActivity extends Activity
                 break;
 
             case 2:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, InventaireFragment.newInstance())
-                        .commit();
+                if(SharedParams.tokenIsValid()) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, InventaireFragment.newInstance())
+                            .commit();
+                }
                 break;
 
             case 3:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, ExplorationFragment.newInstance())
-                        .commit();
+                if(SharedParams.tokenIsValid()) {
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, ExplorationFragment.newInstance())
+                            .commit();
+                }
                 break;
         }
     }

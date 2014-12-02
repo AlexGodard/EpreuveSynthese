@@ -95,6 +95,7 @@ public class InscriptionFragment extends Fragment {
                     .asJsonObject()
                     .withResponse()
                     .setCallback(new FutureCallback<Response<JsonObject>>() {
+
                         @Override
                         public void onCompleted(Exception e, Response<JsonObject> jsonObjectResponse) {
 
@@ -114,6 +115,10 @@ public class InscriptionFragment extends Fragment {
 
                                 Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_inscription) , Toast.LENGTH_LONG).show();
 
+                                FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+                                transaction.replace(R.id.container,ScanFragment.newInstance())
+                                        .addToBackStack("");
+                                transaction.commit();
 
                             }
                             else{
@@ -141,10 +146,6 @@ public class InscriptionFragment extends Fragment {
                 // Verifications
                 ajouterExplorateur();
 
-                FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                transaction.replace(R.id.container,ScanFragment.newInstance())
-                        .addToBackStack("");
-                transaction.commit();
             }
         });
     }

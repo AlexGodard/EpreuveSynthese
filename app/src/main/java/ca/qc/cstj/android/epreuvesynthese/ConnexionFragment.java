@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 
 import com.google.gson.JsonArray;
@@ -22,6 +23,8 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.Response;
+
+import org.apache.http.HttpStatus;
 
 /**
  * Created by 1247308 on 2014-11-21.
@@ -91,32 +94,59 @@ public class ConnexionFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+
+
                 // On tente de connecter l'utilisateur
                 Ion.with(getActivity())
                         .load(ServicesURI.EXPLORATEURS_SERVICE_URI + "?username=" + etNomUtilisateur.getText().toString() + "&password=" + etMotDePasse.getText().toString())
                         .asJsonObject()
                         .withResponse()
                         .setCallback(new FutureCallback<Response<JsonObject>>() {
+
                             @Override
                             public void onCompleted(Exception e, Response<JsonObject> response) {
 
-                                if (response.getHeaders().getResponseCode() == 500)
-                                {
-                                    Toast.makeText(getActivity().getApplicationContext(), "Erreur de connexion", Toast.LENGTH_LONG).show();
-                                }
-                                else {
-                                    Toast.makeText(getActivity().getApplicationContext(), "Vous êtes connecté!", Toast.LENGTH_LONG).show();
+                               // String s = ServicesURI.EXPLORATEURS_SERVICE_URI + "?username=" + etNomUtilisateur.getText().toString() + "&password=" + etMotDePasse.getText().toString();
 
-                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.container, ScanFragment.newInstance())
+                                if(response.getHeaders().getResponseCode() == HttpStatus.SC_OK){
+
+                                    JsonObject json = response.getResult();
+
+                                    SharedParams.setExplorateur(json);
+
+                                    if(json.has("token")) {
+                                        SharedParams.setToken(json.getAsJsonObject("token").getAsJsonPrimitive("token").getAsString());
+                                    }
+
+
+                                    String s = SharedParams.getToken();
+
+                                    Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_connexion) , Toast.LENGTH_LONG).show();
+
+                                    FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.container,ScanFragment.newInstance())
                                             .addToBackStack("");
                                     transaction.commit();
+
+
+                                }
+                                else if (response.getHeaders().getResponseCode() == HttpStatus.SC_NOT_FOUND)
+                                {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Vos informations ne sont pas valides", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getActivity().getApplicationContext(), "Une erreur est survenue. Réessayez plus tard", Toast.LENGTH_LONG).show();
+
                                 }
                             }
                         });
             }
         });
     }
+
+
+
+
 
     @Override
     public void onAttach(Activity activity) {
