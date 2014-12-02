@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	var URL = "https://tpsynthese-web-v5458545875-mlarameecstj.c9.io/runes";
 	var datatoken = localStorage.getItem("token");
-	$(document).ready(function() {
+	var runesBD;
+	   
 	  $.ajax({
 			url : URL,
 			contentType: "application/json",
@@ -14,6 +15,47 @@ $(document).ready(function() {
                 if(response.air > 15)
                 {
 				  $("#air").append("<button id='addAir'>Creer une rune de fusion</button>");
+				  
+				  $("#addAir").click(function() {
+					$.ajax({
+						url : URL,
+						type : 'GET',
+						dataType : 'json',
+						data: 
+						{
+							access_token : datatoken
+						},
+							success: function(response) {
+							runesBD = response;
+							runesBD.air = runesBD.air - 15;  
+							return true;				
+			            },
+							error: function(response) {			
+							alert("error");
+							return false;						   
+						}
+				  });				  
+				  
+				   $.ajax({
+						url : URL,
+						type : 'PUT',
+						dataType : 'json',
+						data: 
+						{
+							access_token : datatoken,
+							runes : runesBD
+						},
+						success: function(response) {
+							window.location.reload("index.html");	
+							return true;				
+						},
+						error: function(response) {
+						    alert(datatoken);
+							alert("opsss" + response);
+							return false;						   
+						}
+					});
+				  });
 				}				
 				$("#earth").html("x " + response.earth);
                 if(response.earth > 15)
@@ -47,5 +89,8 @@ $(document).ready(function() {
 			   return false;						   
 			}
 		});
-	});      
-});
+		
+		
+		
+});    
+
