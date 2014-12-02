@@ -59,3 +59,46 @@
 	text-align: center;
 	margin-right: -35px;
 }
+
+/* Page Mew Troops */
+.troops {
+	float: left;
+	width: 265px;
+	margin: 10px 0px 10px 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #738a17;
+}
+
+.troops img {
+	background-color: transparent;
+}
+
+
+.imageTroop {
+	width: 265px;
+	height: 175px;
+	margin-bottom: 20px;
+	background-color: transparent;
+}
+
+.troops a {
+	text-decoration: none;
+	color: #e85441;
+	font-size: 18px;
+}
+
+.detailsTroop {
+	margin-top: 15px;
+}
+
+.detailsTroop  p {
+	font-size: 22px;
+	float: left;
+	margin: 10px 35px 0 0;
+}
+
+.stats {
+	float: left;
+	width: 35px;
+	margin: 0 5px 0 0;
+}

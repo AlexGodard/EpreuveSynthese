@@ -11,21 +11,20 @@ $(document).ready(function() {
 			success: function(response) {
 				$.each(response, function(troop){
 				var UneTroop = response[troop];
-                $("#Troops").append("<div class='box blue pb1'><img src='" +
+                $("#grilleTroops").append("<div class='troops'><img class='imageTroop' src='" +
 				UneTroop.imageUrl +
-				"' alt='' class='img_inner fleft'><div class='extra_wrapper'>" + 
-				"<div class='text1'><a href='#'>" + 
+				"' alt='' >" + 
+				"<a href='#'>" + 
 				UneTroop.name + 
-				"</a></div>" +
-				"<p>Attack : " + 
+				"</a>" +
+				"<div class='detailsTroop'><img class='stats' src='images/attack.png' alt='Attaque'></img><p>" + 
 				UneTroop.attack + 
-				"</p>" +"<p>Defense : " + 
+				"</p>" +"<img class='stats' src='images/defense.png' alt='Défense'><p>" + 
 				UneTroop.defense +
 				"</p>" +
-				"<p>Speed : " +
+				"<img class='stats' src='images/speed.png' alt='Vitesse'><p>" +
 				UneTroop.speed +
-				"</p>" +
-				"<div class='clear'></div>" +
+				"</p></div>" +
 				"</div>");
 				});
 			    return true;						   

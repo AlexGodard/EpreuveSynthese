@@ -240,7 +240,7 @@ header {
 
 h1 {
 	float: left;
-	padding-top: 61px;
+	padding-top: 20px;
 	z-index: 999;
 
 }
@@ -420,10 +420,6 @@ h1 a img {
 
 .blue {
 	border-color: #527dca;
-}
-
-.blue.block1 img, .cont1  .blue img{
-	background-color: #029BFF;
 }
 
 .cont1 .box.bx2 {
