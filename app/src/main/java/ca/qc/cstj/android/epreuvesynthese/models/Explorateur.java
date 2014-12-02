@@ -39,4 +39,8 @@ public class Explorateur {
         inventaire = new Inventaire();
 
     }
+
+    public String getNom() {
+        return nom;
+    }
 }

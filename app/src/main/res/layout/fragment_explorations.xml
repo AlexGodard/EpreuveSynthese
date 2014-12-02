@@ -11,6 +11,7 @@
         android:text="Explorations"
         android:textSize="60dp"/>
     <TextView
+        android:id="@+id/txtNomExplorateur"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="Pour l'explorateur _____"

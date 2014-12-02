@@ -20,7 +20,6 @@ public class SharedParams {
     public static void setExplorateur(JsonObject explorateur){
 
         _explorateur = new Explorateur(explorateur);
-        _explorateur.
 
     }
 

@@ -8,6 +8,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.gson.JsonArray;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+import com.koushikdutta.ion.Response;
+
+import ca.qc.cstj.android.epreuvesynthese.adapters.ExplorationAdapter;
+import ca.qc.cstj.android.epreuvesynthese.models.Exploration;
+import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
+import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
 
 /**
  * Created by 1247308 on 2014-11-21.
@@ -19,6 +31,10 @@ public class ExplorationFragment extends Fragment{
      */
 
     private ProgressDialog progressDialog;
+    private Exploration exploration;
+    private TextView txtNomExplorateur;
+    private ListView lstExploration;
+    private ExplorationAdapter explorationAdapter;
 
     private OnFragmentInteractionListener mListener;
 
@@ -39,6 +55,7 @@ public class ExplorationFragment extends Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_explorations, container, false);
 
+        txtNomExplorateur = (TextView) rootView.findViewById(R.id.txtNomExplorateur);
 
 
         return rootView;
@@ -48,6 +65,32 @@ public class ExplorationFragment extends Fragment{
     public void onStart() {
         super.onStart();
 
+        txtNomExplorateur.setText("Pour l'explorateur " + SharedParams._explorateur.getNom());
+        lstExploration = (ListView) getActivity().findViewById(R.id.lstExplorations);
+
+        loadExplorations();
+    }
+
+    private void loadExplorations()
+    {
+        progressDialog = ProgressDialog.show(getActivity(),"","En chargement...",true,false);
+
+        Ion.with(getActivity())
+                .load(ServicesURI.EXPLORATIONS_SERVICES_URI)
+                .setHeader("x-access-token", SharedParams.getToken())
+                .asJsonArray()
+                .withResponse()
+                .setCallback(new FutureCallback<Response<JsonArray>>() {
+                    @Override
+                    public void onCompleted(Exception e, Response<JsonArray> response) {
+
+                        explorationAdapter = new ExplorationAdapter(getActivity(),
+                                getActivity().getLayoutInflater(), response.getResult());
+                        lstExploration.setAdapter(explorationAdapter);
+
+                        progressDialog.dismiss();
+                    }
+                });
     }
 
 

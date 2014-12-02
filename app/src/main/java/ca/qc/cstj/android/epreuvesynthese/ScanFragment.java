@@ -64,6 +64,7 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
     public void onStart(){
         super.onStart();
         mScannerView.setResultHandler(this);
+        mScannerView.stopCamera();
         mScannerView.startCamera();
     }
 
@@ -72,6 +73,7 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
     public void onResume() {
         super.onResume();
         mScannerView.setResultHandler(this);
+        mScannerView.stopCamera();
         mScannerView.startCamera();
     }
 
@@ -79,6 +81,7 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
     public void onPause() {
         super.onPause();
         mScannerView.stopCamera();
+
     }
 
     @Override
@@ -111,6 +114,9 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
 
         Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
         toast.show();
+
+        mScannerView.startCamera();
+
     }
 
 

@@ -11,6 +11,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import ca.qc.cstj.android.epreuvesynthese.R;
+import ca.qc.cstj.android.epreuvesynthese.helpers.DateParser;
 
 /**
  * Created by 1247308 on 2014-11-28.
@@ -65,10 +66,17 @@ public class ExplorationAdapter extends BaseAdapter {
 
         JsonObject exploration = getItem(position);
 
-        explorationViewHolder.txtDate.setText(exploration.getAsJsonPrimitive("dateExploration").getAsString());
-        explorationViewHolder.txtDepart.setText(exploration.getAsJsonPrimitive("start").getAsString());
-        explorationViewHolder.txtArrivee.setText(exploration.getAsJsonPrimitive("end").getAsString());
+        explorationViewHolder.txtDate.setText(DateParser.ParseToDate(DateParser.ParseIso(exploration.getAsJsonPrimitive("dateExploration").getAsString())).toString());
+        // On doit strip les locations
+        JsonObject locations = exploration.getAsJsonObject("locations");
 
+        explorationViewHolder.txtDepart.setText("Départ : " + locations.getAsJsonPrimitive("start").getAsString());
+        explorationViewHolder.txtArrivee.setText("Arrivée : " + locations.getAsJsonPrimitive("end").getAsString());
+
+        if (exploration.getAsJsonObject("troop").has("troop"))
+            explorationViewHolder.txtTroop.setText("Troop capturé : Oui");
+        else
+            explorationViewHolder.txtTroop.setText("Troop capturé : Non");
 
         return convertView;
 
