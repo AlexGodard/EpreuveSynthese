@@ -20,43 +20,9 @@
 		<script src="js/jquery/jquery.carouFredSel-6.1.0-packed.js"></script>
 		<script src="js/jquery/jquery.touchSwipe.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="js/menu.js"></script>
 		<script src="js/login.js"></script>
 		<script src="js/deconnexion.js"></script>
-		<script>
-			$(window).load(function () {
-				$('.carousel1').carouFredSel({
-					auto: false,
-					prev: '.prev',
-					next: '.next',
-					width: 220,
-					items: {
-						visible: {
-							min: 3,
-							max: 3
-						},
-						height: 'auto',
-						width: 220,
-					},
-					responsive: true,
-					scroll: 1,
-					mousewheel: false,
-					swipe: {
-						onMouse: false,
-						onTouch: true
-					}
-				});
-				$('.typo').mouseenter(function () {
-					var temp = $(".typo>img").attr("data-href");
-					$(".typo>img").attr(
-						"src", temp
-					);
-				});
-			});
-		</script>
-		<!--[if lt IE 9]>
-		<script src="js/html5shiv.js"></script>
-		<link rel="stylesheet" media="screen" href="css/ie.css">
-		<![endif]-->
 	</head>
 
 	<body  class="page1">
@@ -66,21 +32,6 @@
 			  <h1 id="notrelogo"><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
 			  <div class="clear"></div>
 			  <div class="menu_block">
-				<nav>
-				  <ul class="sf-menu">
-					<li class="current"><a href="index.html">Accueil</a></li>
-					<li><a href="troops.html">Mes Troops</a></li>
-					<li><a href="runes.html">Mes Runes</a></li>
-					<li id="btnDeConnexion"><button id="btnLogout">Deconnexion</button></li>
-					<li id="btnConnexion"><button id="btnLogin">Connexion</button></li>
-				  </ul>
-				</nav>
-				<div id="connexion">
-					<input value="Nom d'utilisateur" type="text" id="txtnomutilisateur" required>
-					<input value="Mot de passe" type="password" id="txtmotdepasse" required>
-				</div>
-				<div class="clear"></div>
-				
 			  </div>
 			  <div class="clear"></div>
 			</div>

@@ -1,6 +1,7 @@
-$("#btnLogin").click(function() { 
-        localStorage.removeItem("token");
-		window.location.replace("index.html");		
+$(document).ready(function() {
+    $("#btnLogout").click(function() { 
+        localStorage.setItem("token","");
+		window.location.reload("index.html");		
 		return true;					
 	});	
 }); 

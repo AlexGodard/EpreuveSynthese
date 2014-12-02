@@ -1,13 +1,13 @@
 $(document).ready(function() {
 	$("#txtnomutilisateur").focus(function(){
-		if ($("#txtnomutilisateur").val() == "Nom d'utilisateur"){
+		if ($("#txtnomutilisateur").val() == "Pseudonym"){
 			$("#txtnomutilisateur").val("").css("color","black");
 		}
 	});
 	
 	$("#txtnomutilisateur").focusout(function(){
 		if ($("#txtnomutilisateur").val() == ""){
-			$("#txtnomutilisateur").val("Nom d'utilisateur").css("color","grey");
+			$("#txtnomutilisateur").val("Pseudonym").css("color","grey");
 		}
 	});
 	
@@ -35,8 +35,7 @@ $(document).ready(function() {
 			dataType : 'json',
 			success: function(response) {
 			    localStorage.setItem("token",response.token.token);
-				alert(response.token.token);
-			    window.location.replace("index.html");		
+			    window.location.reload("index.html");		
 			    return true;						   
 			},
 			error: function(response) {			

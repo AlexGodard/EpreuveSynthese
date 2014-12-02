@@ -31,7 +31,6 @@ $(document).ready(function() {
 			    return true;						   
 			},
 			error: function(response) {			
-			   alert("in fail " + response);
 			   return false;						   
 			}
 		});     
