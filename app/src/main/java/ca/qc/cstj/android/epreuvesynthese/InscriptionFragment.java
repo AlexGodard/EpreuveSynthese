@@ -116,8 +116,7 @@ public class InscriptionFragment extends Fragment {
                                 Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_inscription) , Toast.LENGTH_LONG).show();
 
                                 FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                                transaction.replace(R.id.container,ScanFragment.newInstance())
-                                        .addToBackStack("");
+                                transaction.replace(R.id.container,ScanFragment.newInstance());
                                 transaction.commit();
 
                             }

@@ -92,6 +92,7 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
 
     @Override
     public void onAttach(Activity activity) {
+
         super.onAttach(activity);
     }
 
