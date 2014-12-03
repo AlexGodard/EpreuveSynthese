@@ -36,15 +36,18 @@ $(document).ready(function() {
 						}
 				  });				  
 				  
+					var sendValue = {};
+					
+					sendValue.access_token = datatoken;
+					sendValue.runes = 100;
+					
+					
 				   $.ajax({
 						url : URL,
 						type : 'PUT',
 						dataType : 'json',
-						data: 
-						{
-							access_token : datatoken,
-							runes : runesBD
-						},
+						contentType: 'application/json',
+						data: JSON.stringify(sendValue),
 						success: function(response) {
 							window.location.reload("index.html");	
 							return true;				
