@@ -29,7 +29,9 @@ public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
                    ConnexionFragment.OnFragmentInteractionListener,
                    ScanFragment.OnFragmentInteractionListener,
-                   InscriptionFragment.OnFragmentInteractionListener{
+                   InscriptionFragment.OnFragmentInteractionListener,
+                   DetailExplorationFragment.OnFragmentInteractionListener,
+                   ExplorationFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.

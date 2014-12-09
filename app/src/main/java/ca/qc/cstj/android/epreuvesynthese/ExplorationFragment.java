@@ -2,12 +2,14 @@ package ca.qc.cstj.android.epreuvesynthese;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -69,6 +71,20 @@ public class ExplorationFragment extends Fragment{
         lstExploration = (ListView) getActivity().findViewById(R.id.lstExplorations);
 
         loadExplorations();
+
+        lstExploration.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String href = explorationAdapter.getItem(position).getAsJsonPrimitive("href").getAsString();
+
+                FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+                transaction.replace(R.id.container,DetailExplorationFragment.newInstance(href))
+                        .addToBackStack("");
+                transaction.commit();
+
+            }
+        });
     }
 
     private void loadExplorations()
