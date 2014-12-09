@@ -18,9 +18,14 @@
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="header_details_explo">Informations relative à l\'exploration</string>
-    <string name="runes_details_explo">Runes que vous avez découvertes</string>
+    <string name="runes_details_explo">Informations des runes</string>
     <string name="troop_details_explo">Troop que vous avez découvert</string>
     <string name="submit_inscription">Soumettre</string>
     <string name="succes_connexion">Vous êtes connecté</string>
+    <string name="capturer_capture">Capturer</string>
+    <string name="liberte_capture">Laisser en liberté</string>
+    <string name="inventaire_details_explo">Inventaire</string>
+    <string name="kernel_details_explo">Kernel du troop</string>
+    <string name="decouvertes_details_explo">Runes découvertes</string>
 
 </resources>

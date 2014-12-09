@@ -6,4 +6,8 @@
     <string name="runes_details_explo">Runes que vous avez découvertes</string>
     <string name="submit_inscription">Soumettre</string>
     <string name="succes_connexion">Vous [êtes connecté</string>
+    <string name="capturer_capture">Capturer</string>
+    <string name="liberte_capture">Laisser en liberté</string>
+    <string name="inventaire_details_explo">Inventaire</string>
+    <string name="decouvertes_details_explo">Runes découvertes</string>
 </resources>

@@ -7,7 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -23,7 +24,42 @@ public class CaptureFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
+    //Pour la partie troop
+    private ImageView imgExplo;
+    private TextView attackExplo;
+    private TextView defenseExplo;
+    private TextView speedExplo;
+
+    //Pour la partie des runes
+    //Inventaire
+    private TextView airInventaireExplo;
+    private TextView earthInventaireExplo;
+    private TextView fireInventaireExplo;
+    private TextView lifeInventaireExplo;
+    private TextView logicInventaireExplo;
+    private TextView waterInventaireExplo;
+    private TextView fusionInventaireExplo;
+
+    //Kernel
+    private TextView airKernelExplo;
+    private TextView earthKernelExplo;
+    private TextView fireKernelExplo;
+    private TextView lifeKernelExplo;
+    private TextView logicKernelExplo;
+    private TextView waterKernelExplo;
+    private TextView fusionKernelExplo;
+
+    //Runes exploration
+    private TextView airExplo;
+    private TextView earthExplo;
+    private TextView fireExplo;
+    private TextView lifeExplo;
+    private TextView logicExplo;
+    private TextView waterExplo;
+    private TextView fusionExplo;
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -44,7 +80,7 @@ public class CaptureFragment extends Fragment {
         CaptureFragment fragment = new CaptureFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,7 +93,7 @@ public class CaptureFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
