@@ -127,6 +127,10 @@ public class ConnexionFragment extends Fragment {
                                     transaction.replace(R.id.container,ScanFragment.newInstance());
                                     transaction.commit();
 
+                                    /*transaction
+                                            .replace(R.id.container, CaptureFragment.newInstance("05A6FFA7-3669-4B59-8D9F-7FE3098C1778"))
+                                            .commit();*/
+
 
                                 }
                                 else if (response.getHeaders().getResponseCode() == HttpStatus.SC_NOT_FOUND)

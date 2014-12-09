@@ -29,7 +29,8 @@ public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
                    ConnexionFragment.OnFragmentInteractionListener,
                    ScanFragment.OnFragmentInteractionListener,
-                   InscriptionFragment.OnFragmentInteractionListener{
+                   InscriptionFragment.OnFragmentInteractionListener,
+                   CaptureFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -147,6 +148,9 @@ public class MainActivity extends Activity
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }

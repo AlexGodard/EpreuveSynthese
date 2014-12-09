@@ -109,14 +109,15 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
 
         mScannerView.stopCamera();
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.container, InventaireFragment.newInstance())
-                .commit();
 
         Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
         toast.show();
 
         mScannerView.startCamera();
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, CaptureFragment.newInstance(result.toString()))
+                .commit();
 
     }
 
