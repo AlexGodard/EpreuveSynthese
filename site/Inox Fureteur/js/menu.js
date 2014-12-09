@@ -16,6 +16,7 @@ $(document).ready(function() {
 		"<nav>" +
 		"<ul class='sf-menu'>" +
 		"<li class='current'><a href='index.html'>Accueil</a></li>" +
+		"<li><a href='creation.html'>Devenir explorateur</a></li>" +
 		"<li id='btnConnexion'><a id='btnLogin'>Connexion</a></li>" + 
 		"</ul></nav>" +
 		"<div id='connexion'>" +
