@@ -31,7 +31,8 @@ public class MainActivity extends Activity
                    ScanFragment.OnFragmentInteractionListener,
                    InscriptionFragment.OnFragmentInteractionListener,
                    DetailExplorationFragment.OnFragmentInteractionListener,
-                   ExplorationFragment.OnFragmentInteractionListener{
+                   ExplorationFragment.OnFragmentInteractionListener,
+                   CaptureFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -149,6 +150,9 @@ public class MainActivity extends Activity
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }

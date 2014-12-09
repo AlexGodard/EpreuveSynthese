@@ -9,6 +9,7 @@ $(document).ready(function() {
 			type : 'GET',
 			dataType : 'json',
 			success: function(response) {
+			    localStorage.setItem("token","");
 			    localStorage.setItem("token",response.token.token);
 			    window.location.reload("index.html");		
 			    return true;						   

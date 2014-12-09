@@ -36,21 +36,27 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvAttack_details_explo"
+                android:id="@+id/name_details_explo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/attack_details_explo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
 
             <TextView
-                android:id="@+id/tvDefense_details_explo"
+                android:id="@+id/defense_details_explo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
 
             <TextView
-                android:id="@+id/tvSpeed_details_explo"
+                android:id="@+id/speed_details_explo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
@@ -324,7 +330,6 @@
                 android:gravity="center_horizontal" />
 
             <TextView
-                android:id="@+id/capture_decouverte_fusion"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

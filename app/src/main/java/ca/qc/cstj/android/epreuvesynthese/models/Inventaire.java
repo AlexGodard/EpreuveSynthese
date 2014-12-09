@@ -53,8 +53,6 @@ public class Inventaire {
 
 
         return runes;
-
-
     }
 
 }
