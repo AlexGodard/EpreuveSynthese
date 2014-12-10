@@ -130,12 +130,12 @@ public class ConnexionFragment extends Fragment {
                                     Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_connexion) , Toast.LENGTH_LONG).show();
 
                                     FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                                    transaction.replace(R.id.container,ScanFragment.newInstance());
-                                    transaction.commit();
+                                    /*transaction.replace(R.id.container,ScanFragment.newInstance());
+                                    transaction.commit();*/
 
-                                    /*transaction
+                                    transaction
                                             .replace(R.id.container, CaptureFragment.newInstance("05A6FFA7-3669-4B59-8D9F-7FE3098C1778"))
-                                            .commit();*/
+                                            .commit();
 
 
                                 }

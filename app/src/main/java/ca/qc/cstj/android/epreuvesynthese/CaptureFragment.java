@@ -218,6 +218,8 @@ public class CaptureFragment extends Fragment{
                             //Si on a un troop
                             if(objetExplo.getAsJsonObject("troop").has("name")){
 
+                                troop = new Troop(objetExplo.getAsJsonObject("troop"));
+
                                 //On charge l'image
                                 Ion.with(imgExplo)
                                         .placeholder(R.drawable.ic_launcher)
@@ -226,6 +228,7 @@ public class CaptureFragment extends Fragment{
 
                                 afficherTroop(objetExplo.getAsJsonObject("troop"));
 
+                                //On vérifie qu'il est capturable et si non on retire le bouton qui permet la capture
                                 if(!isCatchable(SharedParams._explorateur.getRunesAsJson(), objetExplo.getAsJsonObject("troop").getAsJsonObject("kernel"))){
 
                                     retirerBoutonCapture();
