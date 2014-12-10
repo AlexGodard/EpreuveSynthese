@@ -3,6 +3,7 @@ package ca.qc.cstj.android.epreuvesynthese;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -23,6 +24,7 @@ import com.koushikdutta.ion.Response;
 import org.apache.http.HttpStatus;
 
 import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
+import ca.qc.cstj.android.epreuvesynthese.models.Inventaire;
 import ca.qc.cstj.android.epreuvesynthese.models.Troop;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 
@@ -72,7 +74,6 @@ public class CaptureFragment extends Fragment{
     private TextView lifeKernelExplo;
     private TextView logicKernelExplo;
     private TextView waterKernelExplo;
-    private TextView fusionKernelExplo;
 
     //Runes exploration
     private TextView airExplo;
@@ -145,6 +146,14 @@ public class CaptureFragment extends Fragment{
         defenseExplo = (TextView)rootView.findViewById(R.id.defense_details_explo);
         speedExplo = (TextView)rootView.findViewById(R.id.speed_details_explo);
 
+        //Kernel
+        airKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_air);
+        earthKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_earth);
+        fireKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_fire);
+        lifeKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_life);
+        logicKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_logic);
+        waterKernelExplo = (TextView)rootView.findViewById(R.id.capture_kernel_water);
+
         lblTroop = (TextView)rootView.findViewById(R.id.lbl_troop_capture);
 
 
@@ -209,24 +218,18 @@ public class CaptureFragment extends Fragment{
                             //Si on a un troop
                             if(objetExplo.getAsJsonObject("troop").has("name")){
 
-                                troop = new Troop(objetExplo.getAsJsonObject("troop"));
-
                                 //On charge l'image
                                 Ion.with(imgExplo)
                                         .placeholder(R.drawable.ic_launcher)
                                         .error(R.drawable.ic_launcher)
                                         .load(troop.getTroopAsJson().getAsJsonPrimitive("imageUrl").getAsString());
 
-                                afficherTroop(troop.getTroopAsJson());
-/*
-                                if(isCatchable(SharedParams._explorateur.getRunesAsJson(), objetExplo.getAsJsonObject("troop").getAsJsonObject("kernel"))){
+                                afficherTroop(objetExplo.getAsJsonObject("troop"));
 
+                                if(!isCatchable(SharedParams._explorateur.getRunesAsJson(), objetExplo.getAsJsonObject("troop").getAsJsonObject("kernel"))){
 
-
+                                    retirerBoutonCapture();
                                 }
-                                else{
-
-                                }*/
 
                             }
                             //Sinon
@@ -244,6 +247,12 @@ public class CaptureFragment extends Fragment{
                             if(objetExplo.getAsJsonObject("runes").has("air")){
 
                                 afficherRunesExplorations(objetExplo.getAsJsonObject("runes"));
+
+                            }
+                            //Si on a pas de rune, on affiche un set de runes vide
+                            else{
+
+                                afficherRunesExplorations(new Inventaire().getRunesAsJson());
 
                             }
 
@@ -319,6 +328,22 @@ public class CaptureFragment extends Fragment{
         attackExplo.setText(getString(R.string.details_attack) + " : " + troop.get("attack").getAsString());
         defenseExplo.setText(getString(R.string.details_defense) + " : " + troop.get("defense").getAsString());
         speedExplo.setText(getString(R.string.details_speed) + " : " + troop.get("speed").getAsString());
+
+        if(troop.has("kernel")){
+            afficherKernel(troop.getAsJsonObject("kernel"));
+        }
+
+
+    }
+
+    private void afficherKernel(JsonObject kernel){
+
+        airKernelExplo.setText(kernel.getAsJsonPrimitive("air").getAsString());
+        earthKernelExplo.setText(kernel.getAsJsonPrimitive("earth").getAsString());
+        fireKernelExplo.setText(kernel.getAsJsonPrimitive("fire").getAsString());
+        lifeKernelExplo.setText(kernel.getAsJsonPrimitive("life").getAsString());
+        logicKernelExplo.setText(kernel.getAsJsonPrimitive("logic").getAsString());
+        waterKernelExplo.setText(kernel.getAsJsonPrimitive("water").getAsString());
 
     }
 
