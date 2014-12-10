@@ -36,6 +36,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:src="@drawable/earth"
+            android:id="@+id/ivEarthRune"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEarth"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
             android:src="@drawable/fire"
             android:id="@+id/ivFireRune"
             android:layout_width="60dp"
@@ -56,35 +76,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/water"
-            android:id="@+id/ivWaterRune"
+            android:src="@drawable/life"
+            android:id="@+id/ivLifeRune"
             android:layout_width="60dp"
             android:layout_height="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvWater"
-            android:text="0"
-            android:textSize="40dp"
-            android:layout_gravity="center"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/earth"
-            android:id="@+id/ivEarthRune"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvEarth"
+            android:id="@+id/tvLife"
             android:text="0"
             android:textSize="40dp"
             android:layout_gravity="center"/>
@@ -116,15 +116,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:src="@drawable/life"
-            android:id="@+id/ivLifeRune"
+            android:src="@drawable/water"
+            android:id="@+id/ivWaterRune"
             android:layout_width="60dp"
             android:layout_height="60dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvLife"
+            android:id="@+id/tvWater"
             android:text="0"
             android:textSize="40dp"
             android:layout_gravity="center"/>

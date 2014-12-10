@@ -110,10 +110,10 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
         mScannerView.stopCamera();
 
 
-        Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
-        toast.show();
+        /*Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
+        toast.show();*/
 
-        mScannerView.startCamera();
+        //mScannerView.startCamera();
 
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, CaptureFragment.newInstance(result.toString()))

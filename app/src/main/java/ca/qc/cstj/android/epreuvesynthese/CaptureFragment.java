@@ -2,13 +2,16 @@ package ca.qc.cstj.android.epreuvesynthese;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,15 +27,7 @@ import ca.qc.cstj.android.epreuvesynthese.models.Troop;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CaptureFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CaptureFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+
 public class CaptureFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,12 +37,23 @@ public class CaptureFragment extends Fragment{
     private JsonObject objetExplo;
     private Troop troop;
 
+    //Boutons
+    private Button btnCapture;
+    private Button btnContinue;
+
+    //Locations
+    private TextView startLocation;
+    private TextView endLocation;
+
+
     //Pour la partie troop
     private ImageView imgExplo;
     private TextView nameExplo;
     private TextView attackExplo;
     private TextView defenseExplo;
     private TextView speedExplo;
+
+    private TextView lblTroop;
 
     //Pour la partie des runes
     //Inventaire
@@ -111,6 +117,9 @@ public class CaptureFragment extends Fragment{
 
         View rootView =  inflater.inflate(R.layout.fragment_capture, container, false);
 
+        //Locations
+        startLocation = (TextView)rootView.findViewById(R.id.start_explo_details_explo);
+        endLocation = (TextView)rootView.findViewById(R.id.end_explo_details_explo);
 
         //Runes inventaire
         airInventaireExplo = (TextView)rootView.findViewById(R.id.capture_inventaire_air);
@@ -136,6 +145,12 @@ public class CaptureFragment extends Fragment{
         defenseExplo = (TextView)rootView.findViewById(R.id.defense_details_explo);
         speedExplo = (TextView)rootView.findViewById(R.id.speed_details_explo);
 
+        lblTroop = (TextView)rootView.findViewById(R.id.lbl_troop_capture);
+
+
+        //Boutons
+        btnCapture = (Button)rootView.findViewById(R.id.capture_button);
+        btnContinue = (Button)rootView.findViewById(R.id.continue_button);
 
 
         return rootView;
@@ -148,7 +163,26 @@ public class CaptureFragment extends Fragment{
         objetExplo = new JsonObject();
         troop = new Troop();
 
+        //Bouton qui signale qu'on veut capturer le troop
+        btnCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                enregistrerExploration(objetExplo, true);
+            }
+        });
+
+        //Bouton qui signale qu'on veut capturer le troop
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                enregistrerExploration(objetExplo, false);
+            }
+        });
+
         loadExploration();
+
     }
 
     private void loadExploration(){
@@ -168,6 +202,7 @@ public class CaptureFragment extends Fragment{
                             //On garde l'objet reçu en mémoire
                             objetExplo = jsonObjectResponse.getResult();
 
+                            afficherLocations(objetExplo.getAsJsonObject("locations"));
 
                             afficherRunesExplorateur(SharedParams._explorateur.getRunesAsJson());
 
@@ -183,6 +218,25 @@ public class CaptureFragment extends Fragment{
                                         .load(troop.getTroopAsJson().getAsJsonPrimitive("imageUrl").getAsString());
 
                                 afficherTroop(troop.getTroopAsJson());
+/*
+                                if(isCatchable(SharedParams._explorateur.getRunesAsJson(), objetExplo.getAsJsonObject("troop").getAsJsonObject("kernel"))){
+
+
+
+                                }
+                                else{
+
+                                }*/
+
+                            }
+                            //Sinon
+                            else{
+
+                                lblTroop.setText(R.string.details_capture_noTroop);
+
+                                retirerKernel();
+
+                                retirerBoutonCapture();
 
                             }
 
@@ -208,6 +262,28 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    /*
+    *
+    * Méthodes pour modifier l'interface dépendement de ce que l'on a dans la réponse
+    *
+    * */
+
+    private void retirerBoutonCapture(){
+
+        LinearLayout container = (LinearLayout)getActivity().findViewById(R.id.layoutButtons);
+        container.removeView((Button)getActivity().findViewById(R.id.capture_button));
+
+    }
+
+    private void retirerKernel(){
+
+        LinearLayout container = (LinearLayout)getActivity().findViewById(R.id.layoutFull);
+        container.removeView((LinearLayout) getActivity().findViewById(R.id.linearLayout_kernel_capture));
+
+    }
+
+    /**************************/
+
     private void afficherRunesExplorateur(JsonObject runes) {
 
         airInventaireExplo.setText(runes.get("air").toString());
@@ -218,6 +294,12 @@ public class CaptureFragment extends Fragment{
         waterInventaireExplo.setText(runes.get("water").toString());
         fusionInventaireExplo.setText(runes.get("fusion").toString());
 
+    }
+
+    private void afficherLocations(JsonObject locations){
+
+        startLocation.setText(getString(R.string.details_start) + " : " + locations.getAsJsonPrimitive("start").getAsString());
+        endLocation.setText(getString(R.string.details_end) + " : " + locations.getAsJsonPrimitive("end").getAsString());
     }
 
     private void afficherRunesExplorations(JsonObject runes){
@@ -233,10 +315,88 @@ public class CaptureFragment extends Fragment{
 
     private void afficherTroop(JsonObject troop){
 
-        nameExplo.setText("Name : " + troop.get("name").toString());
-        attackExplo.setText("Attack : " + troop.get("attack").toString());
-        defenseExplo.setText("Defense : " + troop.get("defense").toString());
-        speedExplo.setText("Speed : " + troop.get("speed").toString());
+        nameExplo.setText(getString(R.string.details_nom) + " : " + troop.get("name").getAsString());
+        attackExplo.setText(getString(R.string.details_attack) + " : " + troop.get("attack").getAsString());
+        defenseExplo.setText(getString(R.string.details_defense) + " : " + troop.get("defense").getAsString());
+        speedExplo.setText(getString(R.string.details_speed) + " : " + troop.get("speed").getAsString());
+
+    }
+
+    private boolean isCatchable(JsonObject runesExplorateur, JsonObject kernel){
+
+
+        try {
+            if (kernel.getAsJsonPrimitive("air").getAsInt() > runesExplorateur.getAsJsonPrimitive("air").getAsInt()) {
+                return false;
+            }
+
+            if (kernel.getAsJsonPrimitive("earth").getAsInt() > runesExplorateur.getAsJsonPrimitive("earth").getAsInt()) {
+                return false;
+            }
+
+            if (kernel.getAsJsonPrimitive("fire").getAsInt() > runesExplorateur.getAsJsonPrimitive("fire").getAsInt()) {
+                return false;
+            }
+
+            if (kernel.getAsJsonPrimitive("life").getAsInt() > runesExplorateur.getAsJsonPrimitive("life").getAsInt()) {
+                return false;
+            }
+
+            if (kernel.getAsJsonPrimitive("logic").getAsInt() > runesExplorateur.getAsJsonPrimitive("logic").getAsInt()) {
+                return false;
+            }
+
+            if (kernel.getAsJsonPrimitive("water").getAsInt() > runesExplorateur.getAsJsonPrimitive("water").getAsInt()) {
+                return false;
+            }
+        }
+        catch(Exception e){
+
+            return false;
+        }
+
+        return true;
+    }
+
+    //On sauvegarde l'exploration avec ou sans la troop
+    private void enregistrerExploration(JsonObject exploration, boolean capture){
+
+        //On rend le troop impossible à ajouter
+        if(!capture && exploration.getAsJsonObject("troop").has("name")){
+
+            exploration.getAsJsonObject("troop").remove("name");
+        }
+
+        Ion.with(getActivity())
+            .load("POST", ServicesURI.EXPLORATION_AJOUT_SERVICE_URI)
+            .addHeader("Content-Type", "application/json")
+            .setHeader("x-access-token",SharedParams.getToken())
+            .setJsonObjectBody(exploration)
+            .asJsonObject()
+            .withResponse()
+            .setCallback(new FutureCallback<Response<JsonObject>>() {
+
+                @Override
+                public void onCompleted(Exception e, Response<JsonObject> jsonObjectResponse) {
+
+                    //Si on reçoit le code 201
+                    if(jsonObjectResponse.getHeaders().getResponseCode() == HttpStatus.SC_CREATED){
+
+                        FragmentTransaction transaction =  getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container,InventaireFragment.newInstance());
+                        transaction.commit();
+
+
+                        Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_exploration) , Toast.LENGTH_LONG).show();
+
+                    }
+                    else{
+
+                        Toast.makeText(getActivity().getApplicationContext(),getString(R.string.echec_exploration) , Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
 
     }
 
@@ -269,7 +429,5 @@ public class CaptureFragment extends Fragment{
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
-
 
 }

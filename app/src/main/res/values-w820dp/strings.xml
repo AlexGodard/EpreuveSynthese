@@ -7,7 +7,16 @@
     <string name="submit_inscription">Soumettre</string>
     <string name="succes_connexion">Vous [êtes connecté</string>
     <string name="capturer_capture">Capturer</string>
-    <string name="liberte_capture">Laisser en liberté</string>
+    <string name="liberte_capture">Continuer</string>
     <string name="inventaire_details_explo">Inventaire</string>
     <string name="decouvertes_details_explo">Runes découvertes</string>
+    <string name="details_nom">Nom</string>
+    <string name="details_attack">Attaque</string>
+    <string name="details_defense">Défense</string>
+    <string name="details_speed">Vitesse</string>
+    <string name="details_start">Départ</string>
+    <string name="details_end">Arrivée</string>
+    <string name="details_capture_noTroop">Désolé aucun troop a été trouvé dans ce voyage</string>
+    <string name="echec_exploration">Oops! Quelque chose s\'est mal passé. Veuillez réessayez</string>
+    <string name="succes_exploration">Exploration complétée avec succès</string>
 </resources>
