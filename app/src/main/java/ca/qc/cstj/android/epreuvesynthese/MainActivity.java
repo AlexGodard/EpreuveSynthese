@@ -79,11 +79,6 @@ public class MainActivity extends Activity
                             .replace(R.id.container, ScanFragment.newInstance())
                             .commit();
                 }
-
-                //Intent intent = new Intent(this,SimpleScannerActivity.class);
-                //String message = editText.getText().toString();
-                //intent.putExtra(EXTRA_MESSAGE,message);
-                //startActivity(intent);
                 break;
 
             case 2:
@@ -98,6 +93,15 @@ public class MainActivity extends Activity
                 if(SharedParams.tokenIsValid()) {
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, ExplorationFragment.newInstance())
+                            .commit();
+                }
+                break;
+
+            default:
+                if(SharedParams.tokenIsValid()) {
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
                             .commit();
                 }
                 break;
@@ -117,6 +121,9 @@ public class MainActivity extends Activity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
                 break;
         }
     }
@@ -149,10 +156,8 @@ public class MainActivity extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
             return true;
-
-
-
         }
         return super.onOptionsItemSelected(item);
     }

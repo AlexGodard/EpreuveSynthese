@@ -19,4 +19,6 @@
     <string name="details_capture_noTroop">Désolé aucun troop a été trouvé dans ce voyage</string>
     <string name="echec_exploration">Oops! Quelque chose s\'est mal passé. Veuillez réessayez</string>
     <string name="succes_exploration">Exploration complétée avec succès</string>
+    <string name="action_disconnect">Déconnexion</string>
+    <string name="title_section5">Déconnexion</string>
 </resources>

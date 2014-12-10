@@ -57,6 +57,12 @@ public class ConnexionFragment extends Fragment {
         return fragment;
     }
 
+    public static ConnexionFragment newInstance() {
+        ConnexionFragment fragment = new ConnexionFragment();
+
+        return fragment;
+    }
+
     public ConnexionFragment() { }
 
     @Override

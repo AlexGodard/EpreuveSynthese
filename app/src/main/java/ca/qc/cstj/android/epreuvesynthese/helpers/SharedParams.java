@@ -1,10 +1,12 @@
 package ca.qc.cstj.android.epreuvesynthese.helpers;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.JsonObject;
 
+import ca.qc.cstj.android.epreuvesynthese.InventaireFragment;
 import ca.qc.cstj.android.epreuvesynthese.R;
 import ca.qc.cstj.android.epreuvesynthese.models.Explorateur;
 
@@ -58,9 +60,11 @@ public class SharedParams {
 
     }
 
-    public static void disconnect(){
+    public static void disconnect()
+    {
         _token = "";
     }
+
 
 
 
