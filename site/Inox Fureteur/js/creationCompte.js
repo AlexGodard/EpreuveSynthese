@@ -1,11 +1,10 @@
 $(document).ready(function() {
 	var URL = "https://tpsynthese-web-v5458545875-mlarameecstj.c9.io/explorateurs";
-	var datatoken = localStorage.getItem("token");
 	var sendValue = {};
-	var erreur = false;
     
 	$("#create").click(function() {	
-	
+	   var erreur = false;
+	   
 	   $("#erreurs").html("<p></p>");
 	
 	   if($("#nomComplet").val() == "" || $("#nomExplorateur").val() == "" || $("#mdp").val() == "")
@@ -49,7 +48,7 @@ $(document).ready(function() {
 			contentType: 'application/json',
 			data: JSON.stringify(sendValue),
 			success: function(response) {
-			localStorage.setItem("token",response.token.token);
+			    localStorage.setItem("token",response.token.token);
 			    window.location.replace("index.html");	
 			    return true;				
 		    },

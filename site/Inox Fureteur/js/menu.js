@@ -2,26 +2,41 @@ $(document).ready(function() {
 	//On va chercher le nom du fichier pour savoir où on se situe sur le site.
 	var fullPath = window.location.pathname;
 	var filename = fullPath.replace(/^.*[\\\/]/, '');
-
 	/* On construit le menu si l'utilisateur est connecté. */
-	if(localStorage.getItem("token") != "")
+	if(localStorage.getItem("token") != "" && filename != "creation.html")
 	{
 		construireMenu();
-		
 	}
 	/* On construit le menu si l'utilisateur n'est pas connecté. */
 	else
-	{      
-		$(".menu_block").html(
-		"<nav>" +
-		"<ul class='sf-menu'>" +
-		"<li class='current'><a href='index.html'>Accueil</a></li>" +
-		"<li><a href='creation.html'>Devenir explorateur</a></li>" +
-		"<li id='btnConnexion'><a id='btnLogin'>Connexion</a></li>" + 
-		"</ul></nav>" +
-		"<div id='connexion'>" +
-		"<input value='Utilisateur' type='text' id='txtnomutilisateur' required>" +
-		"<input value='Mot de passe' type='password' id='txtmotdepasse' required></div><div class='clear'></div>");
+	{
+       if(filename == "creation.html")
+       {
+			$(".menu_block").html(
+			"<nav>" +
+			"<ul class='sf-menu'>" +
+			"<li><a href='index.html'>Accueil</a></li>" +
+			"<li class='current'><a href='creation.html'>Devenir explorateur</a></li>" +
+			"<li id='btnConnexion'><a id='btnLogin'>Connexion</a></li>" + 
+			"</ul></nav>" +
+			"<div id='connexion'>" +
+			"<input value='Utilisateur' type='text' id='txtnomutilisateur' required>" +
+			"<input value='Mot de passe' type='password' id='txtmotdepasse' required></div><div class='clear'></div>");
+       }
+       else
+	   {
+			$(".menu_block").html(
+				"<nav>" +
+				"<ul class='sf-menu'>" +
+				"<li class='current'><a href='index.html'>Accueil</a></li>" +
+				"<li><a href='creation.html'>Devenir explorateur</a></li>" +
+				"<li id='btnConnexion'><a id='btnLogin'>Connexion</a></li>" + 
+				"</ul></nav>" +
+				"<div id='connexion'>" +
+				"<input value='Utilisateur' type='text' id='txtnomutilisateur' required>" +
+				"<input value='Mot de passe' type='password' id='txtmotdepasse' required></div><div class='clear'></div>");
+	   }	   
+
 	}
 
 	/* Lorsqu'on clique une première fois sur les champs du nom d'utilisateur et du mot de passe, on efface le contenu. */
