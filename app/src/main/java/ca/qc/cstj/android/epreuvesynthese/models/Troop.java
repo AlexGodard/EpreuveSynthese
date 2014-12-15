@@ -52,4 +52,28 @@ public class Troop {
 
         return troop;
     }
+
+    public String getHref() {
+        return href;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

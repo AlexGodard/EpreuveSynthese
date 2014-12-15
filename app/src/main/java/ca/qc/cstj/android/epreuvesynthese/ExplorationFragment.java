@@ -18,6 +18,8 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.Response;
 
+import org.apache.http.HttpStatus;
+
 import ca.qc.cstj.android.epreuvesynthese.adapters.ExplorationAdapter;
 import ca.qc.cstj.android.epreuvesynthese.models.Exploration;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
@@ -100,9 +102,16 @@ public class ExplorationFragment extends Fragment{
                     @Override
                     public void onCompleted(Exception e, Response<JsonArray> response) {
 
-                        explorationAdapter = new ExplorationAdapter(getActivity(),
-                                getActivity().getLayoutInflater(), response.getResult());
-                        lstExploration.setAdapter(explorationAdapter);
+                        if(response.getHeaders().getResponseCode() == HttpStatus.SC_OK){
+                            explorationAdapter = new ExplorationAdapter(getActivity(),
+                                    getActivity().getLayoutInflater(), response.getResult());
+                            lstExploration.setAdapter(explorationAdapter);
+                        }
+                        else
+                        {
+                            //Erreur 404
+                        }
+
 
                         progressDialog.dismiss();
                     }

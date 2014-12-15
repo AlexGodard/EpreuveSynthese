@@ -5,6 +5,23 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvDateExploration"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/tvLocationDepart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/tvLocationFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp" />
+
+    <!--<TextView
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,13 +142,13 @@
             android:text="0"
             android:textSize="30dp"
             android:layout_gravity="center"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
     <TextView
+        android:id="@+id/tvCapturee"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Troop rencontrée"
         android:textSize="25dp"/>
 
     <LinearLayout
@@ -152,7 +169,6 @@
                 android:id="@+id/tvNomTroop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nom Troop"
                 android:textStyle="italic"
                 android:textSize="25dp"/>
 
@@ -160,29 +176,19 @@
                 android:id="@+id/tvAttack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Attack :"
                 android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/tvDefence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Defence :"
                 android:textSize="25dp"/>
 
             <TextView
                 android:id="@+id/tvSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Speed :"
                 android:textSize="25dp"/>
-
-            <TextView
-                android:id="@+id/tvCapturee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Capturée : "
-                android:textSize="20dp"/>
 
         </LinearLayout>
     </LinearLayout>

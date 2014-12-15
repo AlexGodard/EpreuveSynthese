@@ -21,12 +21,15 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
+import ca.qc.cstj.android.epreuvesynthese.models.Exploration;
+import ca.qc.cstj.android.epreuvesynthese.models.Troop;
 
 /**
  * Created by 1247308 on 2014-12-09.
@@ -44,10 +47,14 @@ public class DetailExplorationFragment extends Fragment {
     private TextView tvLifeRune;
     private TextView tvLogicRune;
     private TextView tvWaterRune;
+    private TextView tvCapturee;
     private TextView tvAttack;
     private TextView tvDefense;
     private TextView tvSpeed;
     private TextView tvNomTroop;
+    private TextView tvDateExploration;
+    private TextView tvLocationDepart;
+    private TextView tvLocationFin;
 
     private ImageView ivImageTroop;
 
@@ -100,6 +107,10 @@ public class DetailExplorationFragment extends Fragment {
         tvSpeed = (TextView)view.findViewById(R.id.tvSpeed);
         tvWaterRune = (TextView)view.findViewById(R.id.tvWater);
         ivImageTroop = (ImageView)view.findViewById(R.id.ivImageTroop);
+        tvDateExploration = (TextView)view.findViewById(R.id.tvDateExploration);
+        tvLocationDepart = (TextView)view.findViewById(R.id.tvLocationDepart);
+        tvLocationFin = (TextView)view.findViewById(R.id.tvLocationFin);
+        tvCapturee = (TextView)view.findViewById(R.id.tvCapturee);
 
         return view;
     }
@@ -117,17 +128,23 @@ public class DetailExplorationFragment extends Fragment {
                     @Override
                     public void onCompleted(Exception e, JsonObject jsonObject) {
 
-                        /*film = new Film(jsonObject);
+                        Exploration exploration = new Exploration(jsonObject);
 
-                        Ion.with(ivImageTroop)
-                                .load(film.getImageUrl());
+                        tvDateExploration.setText("Exploration du " + exploration.getDateExploration());
+                        tvLocationDepart.setText("Location de départ : " + exploration.getStartLocation());
+                        tvLocationFin.setText("Location de fin : " + exploration.getEndLocation());
 
-                        tvTitre.setText(film.getTitre());
-                        tvPays.setText(film.getPays());
-                        tvGenre.setText(film.getGenre());
-                        tvDuree.setText("Durée : " + film.getDuree().toString() + " minutes");
-                        tvClasse.setText(film.getClasse());
-                        tvRealisateur.setText("Réalisateur : " + film.getRealisateur());*/
+                        if (exploration.getTroop().getName() != "") {
+                            tvCapturee.setText("Troop capturée");
+                            tvNomTroop.setText(exploration.getTroop().getName());
+                            tvAttack.setText("Attaque : " + exploration.getTroop().getName());
+                            tvDefense.setText("Defense : " + exploration.getTroop().getDefense());
+                            tvSpeed.setText("Vitesse : " + exploration.getTroop().getSpeed());
+                            Ion.with(ivImageTroop)
+                                    .load(exploration.getTroop().getImageUrl());
+                        }
+                        else
+                            tvCapturee.setText("Aucune troop de capturée :(");
 
 
                         progressDialog.dismiss();
