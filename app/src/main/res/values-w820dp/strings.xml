@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--
     <string name="error_inscription">Une erreur est survenue lors de la création. Veuillez réessayez plus tard.</string>
     <string name="succes_inscription">Explorateur créé avec succès!</string>
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
@@ -21,5 +22,5 @@
     <string name="succes_exploration">Exploration complétée avec succès</string>
     <string name="action_disconnect">Déconnexion</string>
     <string name="title_section5">Déconnexion</string>
-    <string name="noTroop_detail">Aucun troop capturé lors de l\'exploration</string>
+    <string name="noTroop_detail">Aucun troop capturé lors de l\'exploration</string>-->
 </resources>

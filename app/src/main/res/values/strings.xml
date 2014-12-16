@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Epreuve Synthese</string>
+    <string name="app_name">Inox</string>
     <string name="title_section1">Connexion</string>
-    <string name="title_section2">Scanner une clé</string>
+    <string name="title_section2">Faire une exploration</string>
     <string name="title_section3">Inventaire</string>
     <string name="title_section4">Explorations</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="token">token</string>
     <string name="error_inscription">Une erreur est survenue lors de la création. Veuillez réessayez plus tard.</string>
     <string name="succes_inscription">Explorateur créé avec succès!</string>
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
