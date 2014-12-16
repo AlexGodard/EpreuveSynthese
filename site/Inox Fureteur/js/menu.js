@@ -1,3 +1,4 @@
+/*Ce script est appellé lors au téléchargement de chaque page*/
 $(document).ready(function() {
 	//On va chercher le nom du fichier pour savoir où on se situe sur le site.
 	var fullPath = window.location.pathname;
@@ -10,6 +11,7 @@ $(document).ready(function() {
 	/* On construit le menu si l'utilisateur n'est pas connecté. */
 	else
 	{
+	   /*On offre seulement les fonctionnalités de base de notre site*/
        if(filename == "creation.html")
        {
 			$(".menu_block").html(
@@ -65,7 +67,7 @@ $(document).ready(function() {
 	});
 	
 	
-	
+	/*Si l'utilisateur possède un token valid, on lui offre toutes les fonctionnalités d'un utilisateur connecté*/
 	function construireMenu(){
 		var elementMenu = "<nav>" +
 							"<ul class='sf-menu'>";
