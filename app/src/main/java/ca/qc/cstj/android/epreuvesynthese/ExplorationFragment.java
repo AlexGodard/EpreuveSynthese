@@ -25,9 +25,6 @@ import ca.qc.cstj.android.epreuvesynthese.models.Exploration;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
 
-/**
- * Created by 1247308 on 2014-11-21.
- */
 public class ExplorationFragment extends Fragment{
     /**
      * The fragment argument representing the section number for this

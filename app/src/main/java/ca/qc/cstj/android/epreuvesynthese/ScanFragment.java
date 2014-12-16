@@ -22,17 +22,12 @@ import javax.xml.transform.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-/**
- * Created by 1247308 on 2014-11-21.
- */
-
 public class ScanFragment extends Fragment implements ZXingScannerView.ResultHandler{
     /**
      * The fragment argument representing the section number for this
      * fragment.
      */
 
-    private ProgressDialog progressDialog;
     private ZXingScannerView mScannerView;
     private OnFragmentInteractionListener mListener;
     private ArrayList<Integer> mSelectedIndices;
@@ -105,16 +100,10 @@ public class ScanFragment extends Fragment implements ZXingScannerView.ResultHan
 
     @Override
     public void handleResult(com.google.zxing.Result result) {
-        int duration = Toast.LENGTH_LONG;
 
         mScannerView.stopCamera();
 
-
-        /*Toast toast = Toast.makeText(getActivity(), result.toString(), duration);
-        toast.show();*/
-
-        //mScannerView.startCamera();
-
+        //On change le fragment pourun captureFragment
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, CaptureFragment.newInstance(result.toString()))
                 .commit();

@@ -8,7 +8,7 @@ $(document).ready(function() {
 			contentType: "application/json",
 			data: 
 			{
-			   /*On envoi le token avec notre requête ajax pour prouver que l'utilisateur est authentifié*/
+			   /*On envoie le token avec notre requête ajax pour prouver que l'utilisateur est authentifié*/
 			   access_token : datatoken
 			},
 			success: function(response) {			

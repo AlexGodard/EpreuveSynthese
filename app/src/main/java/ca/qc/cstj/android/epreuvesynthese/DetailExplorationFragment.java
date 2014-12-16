@@ -31,9 +31,6 @@ import ca.qc.cstj.android.epreuvesynthese.helpers.SharedParams;
 import ca.qc.cstj.android.epreuvesynthese.models.Exploration;
 import ca.qc.cstj.android.epreuvesynthese.models.Troop;
 
-/**
- * Created by 1247308 on 2014-12-09.
- */
 public class DetailExplorationFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,33 +117,43 @@ public class DetailExplorationFragment extends Fragment {
         super.onStart();
 
         progressDialog = ProgressDialog.show(getActivity(), "", "En chargement...", true, false);
+
+        //On appel le webservice
         Ion.with(getActivity())
-                .load(href + "?expand=troop")
+                .load(href + "?expand=troop") //on veut l'information sur les troops
                 .setHeader("x-access-token", SharedParams.getToken())
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject jsonObject) {
 
+                        //On initialise l'exploration
                         Exploration exploration = new Exploration(jsonObject);
 
+                        //Affichage des informations de base
                         tvDateExploration.setText("Exploration du " + exploration.getDateExploration());
                         tvLocationDepart.setText("Location de départ : " + exploration.getStartLocation());
                         tvLocationFin.setText("Location de fin : " + exploration.getEndLocation());
 
+                        //Si on a un troop on affiche ses informations
                         if (exploration.getTroop().getName() != "") {
-                            tvCapturee.setText("Troop capturée");
+
+                            tvCapturee.setText("Troop capturé");
                             tvNomTroop.setText(exploration.getTroop().getName());
                             tvAttack.setText("Attaque : " + exploration.getTroop().getName());
-                            tvDefense.setText("Defense : " + exploration.getTroop().getDefense());
+                            tvDefense.setText("Défense : " + exploration.getTroop().getDefense());
                             tvSpeed.setText("Vitesse : " + exploration.getTroop().getSpeed());
+
+                            //On charge l'image
                             Ion.with(ivImageTroop)
                                     .load(exploration.getTroop().getImageUrl());
+
                         }
+                        //Sinon on signale qu'il n'y a aucun troop capturé pour cette exploration
                         else
-                            tvCapturee.setText("Aucune troop de capturée :(");
+                            tvCapturee.setText(getString(R.string.noTroop_detail));
 
-
+                        //On enlève le progressbar
                         progressDialog.dismiss();
 
                     }

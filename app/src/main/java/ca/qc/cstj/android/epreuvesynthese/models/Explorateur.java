@@ -28,7 +28,6 @@ public class Explorateur {
             inventaire = new Inventaire();
 
         }
-
     }
 
     //Constructeur public

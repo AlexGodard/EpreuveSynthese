@@ -3,7 +3,7 @@ $(document).ready(function() {
     $("#btnLogout").click(function() { 
 	   /*On vide le contenu de la variable local contenant le token*/
         localStorage.setItem("token","");
-	   /*On retourne à la page d'acceuil*/
+	   /*On retourne à la page d'accueil*/
 		window.location.reload("index.html");		
 		return true;					
 	});	

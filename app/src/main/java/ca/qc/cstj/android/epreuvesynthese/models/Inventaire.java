@@ -2,11 +2,10 @@ package ca.qc.cstj.android.epreuvesynthese.models;
 
 import com.google.gson.JsonObject;
 
-/**
- * Created by 1247308 on 2014-11-25.
- */
+//Classe inventaire
 public class Inventaire {
 
+    //Attributs
     private int nbRuneAir;
     private int nbRuneFire;
     private int nbRuneWater;
@@ -15,6 +14,7 @@ public class Inventaire {
     private int nbRuneLife;
     private int nbRuneLogic;
 
+    //Constructeur public qui construit l'objet à partir d'un objet json
     public Inventaire(JsonObject runes){
 
         nbRuneAir = runes.getAsJsonPrimitive("air").getAsInt();
@@ -27,6 +27,7 @@ public class Inventaire {
 
     }
 
+    //Constructeur public qui initialise toutes les runes avec la valeur 0
     public Inventaire(){
 
         nbRuneAir = 0;
@@ -39,6 +40,7 @@ public class Inventaire {
 
     }
 
+    //Retourne l'objet dans un objet json
     public JsonObject getRunesAsJson(){
 
         JsonObject runes = new JsonObject();

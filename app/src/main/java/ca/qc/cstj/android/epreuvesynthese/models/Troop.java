@@ -2,11 +2,10 @@ package ca.qc.cstj.android.epreuvesynthese.models;
 
 import com.google.gson.JsonObject;
 
-/**
- * Created by 1247308 on 2014-11-21.
- */
+//Classe Troop
 public class Troop {
 
+    //Attributs
     private String href;
     private String name;
     private int attack;
@@ -14,8 +13,13 @@ public class Troop {
     private int speed;
     private String imageUrl;
 
+    //Constructeur public qui prend en paramètre un objet json
     public Troop(JsonObject troop){
 
+        //On initialise le href avec une variable vide parce que pas tous les troops en ont un
+        href = "";
+
+        //Si l'objet contient un href
         if(troop.has("href")){
             href = troop.getAsJsonPrimitive("href").getAsString();
         }
@@ -27,6 +31,7 @@ public class Troop {
         imageUrl = troop.getAsJsonPrimitive("imageUrl").getAsString();
     }
 
+    //Constructeur public par défaut d'un troop
     public Troop(){
 
         href = "";
@@ -38,6 +43,7 @@ public class Troop {
 
     }
 
+    //Méthode qui retourne un objet json de l'objet troop
     public JsonObject getTroopAsJson(){
 
         JsonObject troop = new JsonObject();
@@ -49,30 +55,35 @@ public class Troop {
         troop.addProperty("speed", speed);
         troop.addProperty("imageUrl", imageUrl);
 
-
         return troop;
     }
 
+    //Méthode qui retourne le href
     public String getHref() {
         return href;
     }
 
+    //Méthode qui retourne le nom
     public String getName() {
         return name;
     }
 
+    //Méthode qui retourne l'attaque
     public int getAttack() {
         return attack;
     }
 
+    //Méthode qui retourne la vitesse
     public int getSpeed() {
         return speed;
     }
 
+    //Méthode qui retourne la défense
     public int getDefense() {
         return defense;
     }
 
+    //Méthode qui retourne le url de l'image
     public String getImageUrl() {
         return imageUrl;
     }

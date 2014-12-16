@@ -1,10 +1,10 @@
-/*Ce srcipt est utilisé lors du login de l'utilisateur*/
+/*Ce script est utilisé lors du login de l'utilisateur*/
 $(document).ready(function() {
-    /*Le webservice appellé*/
+    /*Le webservice appelé*/
 	var URL = "https://tpsynthese-web-v5458545875-mlarameecstj.c9.io/explorateurs";
 
 	$("#btnLogin").click(function() { 
-	   /*On saisie le nom d'utilisateur et son mot de passe des inputs affiché à l'écran*/
+	   /*On saisie le nom d'utilisateur et son mot de passe à partir des inputs affichés à l'écran*/
 		URL += "?username=" + $("#txtnomutilisateur").val() 
 							+ "&password=" + $("#txtmotdepasse").val();	
 		/*Envoi de la demande au webservice*/					
@@ -13,7 +13,7 @@ $(document).ready(function() {
 			type : 'GET',
 			dataType : 'json',
 			success: function(response) {
-			    /*Si le nom d'utilisateur et le mot de passe sont valids, on connect l'utilisateur en enregistrant sont token côté client*/
+			    /*Si le nom d'utilisateur et le mot de passe sont valides, on connecte l'utilisateur en enreigistrant sont token côté client*/
 			    localStorage.setItem("token","");
 			    localStorage.setItem("token",response.token.token);
 				/*On recharge la page pour changer le menu*/

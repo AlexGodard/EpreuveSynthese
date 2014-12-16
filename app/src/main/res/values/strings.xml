@@ -10,13 +10,11 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_simple_scanner">SimpleScannerActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="token">token</string>
     <string name="error_inscription">Une erreur est survenue lors de la création. Veuillez réessayez plus tard.</string>
     <string name="succes_inscription">Explorateur créé avec succès!</string>
     <string name="nonValide_inscription">Erreur : Vous devez remplir tout les champs</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="header_details_explo">Informations relative à l\'exploration</string>
     <string name="runes_details_explo">Informations des runes</string>
     <string name="troop_details_explo">Troop que vous avez découvert</string>
@@ -38,5 +36,6 @@
     <string name="succes_exploration">Exploration complétée avec succès</string>
     <string name="action_disconnect">Déconnexion</string>
     <string name="title_section5">Déconnexion</string>
+    <string name="noTroop_detail">Aucun troop capturé lors de l\'exploration</string>
 
 </resources>

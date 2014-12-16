@@ -28,8 +28,6 @@ import ca.qc.cstj.android.epreuvesynthese.models.Inventaire;
 import ca.qc.cstj.android.epreuvesynthese.models.Troop;
 import ca.qc.cstj.android.epreuvesynthese.services.ServicesURI;
 
-
-
 public class CaptureFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -169,6 +167,7 @@ public class CaptureFragment extends Fragment{
     public void onStart() {
         super.onStart();
 
+        //On instancie des variable par prévention
         objetExplo = new JsonObject();
         troop = new Troop();
 
@@ -249,7 +248,7 @@ public class CaptureFragment extends Fragment{
                                 //On retire la section qui contient l'information du kernel d'un troop
                                 retirerKernel();
 
-                                //On a pas de troop donc le bouton de capture n'est pas nécessaire
+                                //On n'a pas de troop donc le bouton de capture n'est pas nécessaire
                                 retirerBoutonCapture();
 
                             }
@@ -282,10 +281,8 @@ public class CaptureFragment extends Fragment{
 
     }
 
-    /*
-    *
+    /**
     * Méthodes pour modifier l'interface dépendement de ce que l'on a dans la réponse
-    *
     * */
 
     //Méthode qui retire le bouton de capture
@@ -306,6 +303,7 @@ public class CaptureFragment extends Fragment{
 
     /**************************/
 
+    //Méthode qui affiche les runes d'un explorateur
     private void afficherRunesExplorateur(JsonObject runes) {
 
         airInventaireExplo.setText(runes.get("air").toString());
@@ -318,12 +316,14 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    //Méthode qui affiche les locations
     private void afficherLocations(JsonObject locations){
 
         startLocation.setText(getString(R.string.details_start) + " : " + locations.getAsJsonPrimitive("start").getAsString());
         endLocation.setText(getString(R.string.details_end) + " : " + locations.getAsJsonPrimitive("end").getAsString());
     }
 
+    //Méthode qui affiche les runes de l'exploration
     private void afficherRunesExplorations(JsonObject runes){
 
         airExplo.setText(runes.get("air").toString());
@@ -335,6 +335,7 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    //Méthode qui affiche les informations de la troop
     private void afficherTroop(JsonObject troop){
 
         nameExplo.setText(getString(R.string.details_nom) + " : " + troop.get("name").getAsString());
@@ -349,6 +350,7 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    //Méthode qui affiche le kernel d'un troop
     private void afficherKernel(JsonObject kernel){
 
         airKernelExplo.setText(kernel.getAsJsonPrimitive("air").getAsString());
@@ -360,9 +362,10 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    //Méthode qui permet de savoir si l'explorateur peut capturer ou non un troop
     private boolean isCatchable(JsonObject runesExplorateur, JsonObject kernel){
 
-
+        //Pour chaque rune on test voir si le kernel est plus petit ou égal à la rune similaire dans l'inventaire de l'explorateur
         try {
             if (kernel.getAsJsonPrimitive("air").getAsInt() > runesExplorateur.getAsJsonPrimitive("air").getAsInt()) {
                 return false;
@@ -405,6 +408,7 @@ public class CaptureFragment extends Fragment{
             exploration.getAsJsonObject("troop").remove("name");
         }
 
+        //On appele le webservice avec ion
         Ion.with(getActivity())
             .load("POST", ServicesURI.EXPLORATION_AJOUT_SERVICE_URI)
             .addHeader("Content-Type", "application/json")
@@ -428,6 +432,7 @@ public class CaptureFragment extends Fragment{
                         Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_exploration) , Toast.LENGTH_LONG).show();
 
                     }
+                    //Sinon on signale à l'explorateur que quelque a mal tourné et qu'il peut réessayer plus tard
                     else{
 
                         Toast.makeText(getActivity().getApplicationContext(),getString(R.string.echec_exploration) , Toast.LENGTH_LONG).show();

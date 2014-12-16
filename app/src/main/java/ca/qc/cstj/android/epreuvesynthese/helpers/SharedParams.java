@@ -58,10 +58,7 @@ public class SharedParams {
             retour = false;
         }
 
-
         return retour;
-
-
     }
 
     //Méthode qui permet de déconnecter un explorateur

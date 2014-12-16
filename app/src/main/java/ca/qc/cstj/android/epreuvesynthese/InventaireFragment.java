@@ -31,6 +31,7 @@ public class InventaireFragment extends Fragment {
      * fragment.
      */
 
+    //Attributs
     private TextView tvAirRune;
     private TextView tvEarthRune;
     private TextView tvFireRune;
@@ -100,6 +101,9 @@ public class InventaireFragment extends Fragment {
 
     private void loadRunes(){
 
+        progressDialog = ProgressDialog.show(getActivity(), "", "En chargement...", true, false);
+
+        //Appel du webservice
         Ion.with(getActivity())
                 .load(ServicesURI.RUNES_SERVICE_URI)
                 .setHeader("x-access-token", SharedParams.getToken())
@@ -109,6 +113,7 @@ public class InventaireFragment extends Fragment {
                     @Override
                     public void onCompleted(Exception e, Response<JsonObject> jsonObjectResponse) {
 
+                        //Si on a pu récupérer les runes via le webservice, on met à jour l'information qu'on avait dans l'objet explorateur global pour les nouvelles runes
                         if(jsonObjectResponse.getHeaders().getResponseCode() == HttpStatus.SC_OK){
 
                             JsonObject runes = jsonObjectResponse.getResult();
@@ -116,12 +121,16 @@ public class InventaireFragment extends Fragment {
                             SharedParams._explorateur.setRunes(runes);
                         }
 
+                        //On affiche l'information des runes
                         afficherRunes(SharedParams._explorateur.getRunesAsJson());
+
+                        progressDialog.dismiss(); //On enlève le progressbar
                     }
                 });
 
     }
 
+    //Méthode qui affiche les runes
     private void afficherRunes(JsonObject runes){
 
         tvAirRune.setText(runes.getAsJsonPrimitive("air").getAsString());

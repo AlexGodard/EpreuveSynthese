@@ -84,6 +84,7 @@ public class ConnexionFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        //Méthode qui est appelée lorsque le bouton pour s'inscrire est cliqué
         btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,11 +97,12 @@ public class ConnexionFragment extends Fragment {
             }
         });
 
+        //Méthode qui est appelée lorsque le bouton pour se connecter est cliqué
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                progressDialog = ProgressDialog.show(getActivity(), "", "Connexion en cours...", true, false);
 
                 // On tente de connecter l'utilisateur
                 Ion.with(getActivity())
@@ -114,39 +116,45 @@ public class ConnexionFragment extends Fragment {
 
                                // String s = ServicesURI.EXPLORATEURS_SERVICE_URI + "?username=" + etNomUtilisateur.getText().toString() + "&password=" + etMotDePasse.getText().toString();
 
+                                //Si tout s'est bien passé
                                 if(response.getHeaders().getResponseCode() == HttpStatus.SC_OK){
 
                                     JsonObject json = response.getResult();
 
+                                    //Initialisation de l'explorateur avec le json
                                     SharedParams.setExplorateur(json);
 
+                                    //S'il y a un token
                                     if(json.has("token")) {
                                         SharedParams.setToken(json.getAsJsonObject("token").getAsJsonPrimitive("token").getAsString());
                                     }
 
-
-                                    String s = SharedParams.getToken();
-
+                                    //On affiche un petit toast
                                     Toast.makeText(getActivity().getApplicationContext(),getString(R.string.succes_connexion) , Toast.LENGTH_LONG).show();
 
+                                    //On change le fragment pour le scan fragment
                                     FragmentTransaction transaction =  getFragmentManager().beginTransaction();
-                                    /*transaction.replace(R.id.container,ScanFragment.newInstance());
-                                    transaction.commit();*/
+                                    transaction.replace(R.id.container,ScanFragment.newInstance());
+                                    transaction.commit();
 
-                                    transaction
+                                    /*transaction
                                             .replace(R.id.container, CaptureFragment.newInstance("05A6FFA7-3669-4B59-8D9F-7FE3098C1778"))
-                                            .commit();
+                                            .commit();*/
 
 
                                 }
+                                //Si l'explorateur n'existe pas
                                 else if (response.getHeaders().getResponseCode() == HttpStatus.SC_NOT_FOUND)
                                 {
                                     Toast.makeText(getActivity().getApplicationContext(), "Vos informations ne sont pas valides", Toast.LENGTH_LONG).show();
                                 }
+                                //Pour toute autre erreur
                                 else {
                                     Toast.makeText(getActivity().getApplicationContext(), "Une erreur est survenue. Réessayez plus tard", Toast.LENGTH_LONG).show();
 
                                 }
+
+                                progressDialog.dismiss(); //On enlève le progressdialog
                             }
                         });
             }

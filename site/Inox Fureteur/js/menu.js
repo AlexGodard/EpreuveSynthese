@@ -67,7 +67,7 @@ $(document).ready(function() {
 	});
 	
 	
-	/*Si l'utilisateur possède un token valid, on lui offre toutes les fonctionnalités d'un utilisateur connecté*/
+	/*Si l'utilisateur possède un token valide, on lui offre toutes les fonctionnalités d'un utilisateur connecté*/
 	function construireMenu(){
 		var elementMenu = "<nav>" +
 							"<ul class='sf-menu'>";

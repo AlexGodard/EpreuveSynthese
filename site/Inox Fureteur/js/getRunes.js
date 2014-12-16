@@ -16,13 +16,13 @@ $(document).ready(function() {
 	  'water' : 0
 	};
 	
-    /*On envoi une demande ajax au serveur*/	
+    /*On envoie une demande ajax au serveur*/	
 	$.ajax({
 			url : URL,
 			contentType: "application/json",
 			data: 
 			{
-			   /*le token envoyer prouve que l'utilisateur est authentifié*/
+			   /*le token envoyé prouve que l'utilisateur est authentifié*/
 			   access_token : datatoken
 			},
 			success: function(response) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 				/*Si l'utilisateur possède plus de 15 runes de la même sorte, on affiche un bouton pour combiner 15 runes de la même sorte pour créer une rune de fusion*/
                 if(response.air > 15)
                 {
-				 /*On créer dynamiquement un bouton*/
+				 /*On crée dynamiquement un bouton*/
 				  $("#air").append("<button id='addAir'>Creer une rune de fusion</button>");
 				   $("#addAir").click(function() {	
 				  
@@ -48,13 +48,13 @@ $(document).ready(function() {
 				   sendValue.air = sendValue.air - 15;	
 				   sendValue.access_token = datatoken;			   
 				 
-                   /*On envoi une requête au serveur de changer les runes de l'utilisateur*/			   
+                   /*On envoie une requête au serveur de changer les runes de l'utilisateur*/			   
 				   $.ajax({
 						url : URL,
 						type : 'PUT',
 						dataType : 'json',
 						contentType: 'application/json',
-						/*On envoi le token de l'utilisateur et l'objet de runes modifié*/
+						/*On envoie le token de l'utilisateur et l'objet de runes modifiées*/
 						data: JSON.stringify(sendValue),
 						success: function(response) {
 							window.location.reload("runes.html");	
@@ -102,7 +102,7 @@ $(document).ready(function() {
 				
                 if(response.fire > 15)
                 {
-				  $("#fire").append("<button id='addFire'>Creer une rune de fusion</button>");
+				  $("#fire").append("<button id='addFire'>Créer une rune de fusion</button>");
 				   $("#addFire").click(function() {	
 				  
 				   sendValue.fire = sendValue.fire - 15;	
