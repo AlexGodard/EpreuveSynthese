@@ -190,14 +190,18 @@ public class CaptureFragment extends Fragment{
             }
         });
 
+        //On charge l'exploration
         loadExploration();
 
     }
 
+    //Méthode qui charge l'exploration à partir du
     private void loadExploration(){
 
+        //String contenant le url complet qu'on veut appeler
         String hrefFull = ServicesURI.YANNICK_SERVICE_URI + href;
 
+        //On charge les explorations
         Ion.with(getActivity())
                 .load(hrefFull)
                 .asJsonObject()
@@ -206,6 +210,7 @@ public class CaptureFragment extends Fragment{
                     @Override
                     public void onCompleted(Exception e, Response<JsonObject> jsonObjectResponse) {
 
+                        //Si le code du status http est de 200 on va dans cette section
                         if(jsonObjectResponse.getHeaders().getResponseCode() == HttpStatus.SC_OK) {
 
                             //On garde l'objet reçu en mémoire
@@ -235,13 +240,16 @@ public class CaptureFragment extends Fragment{
                                 }
 
                             }
-                            //Sinon
+                            //Sinon on retire la section qui affiche l'information du kernel
                             else{
 
+                                //Affichage d'un qui dit à l'explorateur qu'aucun troop n'existe dans l'exploration
                                 lblTroop.setText(R.string.details_capture_noTroop);
 
+                                //On retire la section qui contient l'information du kernel d'un troop
                                 retirerKernel();
 
+                                //On a pas de troop donc le bouton de capture n'est pas nécessaire
                                 retirerBoutonCapture();
 
                             }
@@ -260,7 +268,7 @@ public class CaptureFragment extends Fragment{
                             }
 
                         }
-                        //Sinon on a la fenêtre de l'inventaires
+                        //Sinon on affiche la fenêtre de l'inventaire
                         else{
 
                             FragmentManager fragmentManager = getFragmentManager();
@@ -280,6 +288,7 @@ public class CaptureFragment extends Fragment{
     *
     * */
 
+    //Méthode qui retire le bouton de capture
     private void retirerBoutonCapture(){
 
         LinearLayout container = (LinearLayout)getActivity().findViewById(R.id.layoutButtons);
@@ -287,6 +296,7 @@ public class CaptureFragment extends Fragment{
 
     }
 
+    //Méthode qui retire la section contenant l'information du kernel
     private void retirerKernel(){
 
         LinearLayout container = (LinearLayout)getActivity().findViewById(R.id.layoutFull);
