@@ -68,7 +68,7 @@ public class MainActivity extends Activity
             case 0:
                 if(!SharedParams.tokenIsValid()) {
                     fragmentManager.beginTransaction()
-                            .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
+                            .replace(R.id.container, ConnexionFragment.newInstance(position + 1)).addToBackStack("")
                             .commit();
                 }
                 break;
@@ -76,7 +76,7 @@ public class MainActivity extends Activity
             case 1:
                 if(SharedParams.tokenIsValid()) {
                     fragmentManager.beginTransaction()
-                            .replace(R.id.container, ScanFragment.newInstance())
+                            .replace(R.id.container, ScanFragment.newInstance()).addToBackStack("")
                             .commit();
                 }
                 break;
@@ -107,6 +107,7 @@ public class MainActivity extends Activity
                 break;
         }
     }
+
 
     public void onSectionAttached(int number) {
         switch (number) {
