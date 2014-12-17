@@ -154,15 +154,12 @@ public class ConnexionFragment extends Fragment {
 
                                 }
 
-                                progressDialog.dismiss(); //On enlève le progressdialog
+                                progressDialog.dismiss(); //On enlève le progressDialog
                             }
                         });
             }
         });
     }
-
-
-
 
 
     @Override

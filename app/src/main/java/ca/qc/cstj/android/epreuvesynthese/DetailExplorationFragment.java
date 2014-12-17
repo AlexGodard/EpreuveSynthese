@@ -140,7 +140,7 @@ public class DetailExplorationFragment extends Fragment {
 
                             tvCapturee.setText("Troop capturé");
                             tvNomTroop.setText(exploration.getTroop().getName());
-                            tvAttack.setText("Attaque : " + exploration.getTroop().getName());
+                            tvAttack.setText("Attaque : " + exploration.getTroop().getAttack());
                             tvDefense.setText("Défense : " + exploration.getTroop().getDefense());
                             tvSpeed.setText("Vitesse : " + exploration.getTroop().getSpeed());
 

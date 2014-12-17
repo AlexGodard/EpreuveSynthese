@@ -100,6 +100,9 @@ public class MainActivity extends Activity
             default:
                 if(SharedParams.tokenIsValid()) {
 
+                    //Déconnexion
+                    SharedParams.disconnect();
+
                     fragmentManager.beginTransaction()
                             .replace(R.id.container, ConnexionFragment.newInstance(position + 1))
                             .commit();
